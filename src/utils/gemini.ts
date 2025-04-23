@@ -63,8 +63,6 @@ interface GeminiResponse {
   }[]
 }
 
-console.log("API KEY ",GEMINI_API_KEY);
-
 async function listGeminiModels() {
   try {
     const response = await fetch(
