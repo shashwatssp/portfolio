@@ -49,10 +49,11 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 15px;
-  padding: 10px;
-  background-color: rgba(0, 255, 255, 0.05);
-  border-radius: 4px;
-  color: var(--text-color-dim);
+  padding: 12px; /* Increased from 10px */
+  background-color: rgba(0, 255, 255, 0.1); /* Changed from 0.05 for better visibility */
+  border-radius: 6px; /* Increased from 4px */
+  color: var(--text-color); /* Changed from var(--text-color-dim) for better visibility */
+  font-size: 15px; /* Added font size */
 }
 
 /* Input container with mobile enter button */
@@ -115,11 +116,11 @@
 
 .education-item,
 .current-role {
-  padding: 15px;
-  border-left: 2px solid var(--text-color-alt);
+  padding: 18px; /* Increased from 15px */
+  border-left: 3px solid var(--text-color-alt); /* Increased from 2px */
   margin-left: 10px;
-  background-color: rgba(0, 255, 0, 0.05);
-  border-radius: 0 4px 4px 0;
+  background-color: rgba(0, 255, 0, 0.1); /* Increased from 0.05 for better visibility */
+  border-radius: 0 6px 6px 0; /* Increased from 0 4px 4px 0 */
 }
 
 .education-header,
@@ -181,9 +182,9 @@
 }
 
 .timeline-content {
-  padding: 15px;
-  background-color: rgba(0, 255, 0, 0.05);
-  border-radius: 4px;
+  padding: 18px; /* Increased from 15px */
+  background-color: rgba(0, 255, 0, 0.1); /* Increased from 0.05 for better visibility */
+  border-radius: 6px; /* Increased from 4px */
 }
 
 .experience-header {
@@ -287,9 +288,9 @@
 }
 
 .project-item {
-  padding: 15px;
-  background-color: rgba(0, 255, 0, 0.05);
-  border-radius: 4px;
+  padding: 18px; /* Increased from 15px */
+  background-color: rgba(0, 255, 0, 0.1); /* Increased from 0.05 for better visibility */
+  border-radius: 6px; /* Increased from 4px */
   border-left: 3px solid var(--text-color-alt);
 }
 
@@ -349,11 +350,12 @@
 }
 
 .tech-badge {
-  padding: 5px 10px;
-  background-color: rgba(0, 255, 255, 0.1);
-  border-radius: 4px;
-  font-size: 12px;
+  padding: 6px 12px; /* Increased from 5px 10px */
+  background-color: rgba(0, 255, 255, 0.15); /* Increased from 0.1 for better visibility */
+  border-radius: 6px; /* Increased from 4px */
+  font-size: 13px; /* Increased from 12px */
   color: var(--text-color-alt);
+  font-weight: bold; /* Added font weight */
 }
 
 .project-links {
@@ -367,13 +369,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
-  background-color: rgba(0, 255, 255, 0.1);
+  padding: 10px 14px; /* Increased from 8px 12px */
+  background-color: rgba(0, 255, 255, 0.15); /* Increased from 0.1 for better visibility */
   border: none;
-  border-radius: 4px;
+  border-radius: 6px; /* Increased from 4px */
   color: var(--text-color-alt);
   font-family: var(--font-family);
-  font-size: 14px;
+  font-size: 15px; /* Increased from 14px */
+  font-weight: bold; /* Added font weight */
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s;
@@ -604,7 +607,7 @@
   color: var(--text-color-dim);
 }
 
-/* Help command styles */
+/* Help command styles - Fix visibility issues */
 .commands-list {
   display: flex;
   flex-direction: column;
@@ -616,7 +619,7 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 10px;
-  background-color: rgba(0, 255, 0, 0.05);
+  background-color: rgba(0, 255, 0, 0.1);
   border-radius: 4px;
 }
 
@@ -625,9 +628,13 @@
   font-weight: bold;
 }
 
+.command-description {
+  color: var(--text-color); /* Explicitly set color to ensure visibility */
+}
+
 .help-tip {
   margin-top: 15px;
-  color: var(--text-color-dim);
+  color: var(--text-color); /* Changed from var(--text-color-dim) for better visibility */
 }
 
 /* Neofetch command styles */
@@ -960,18 +967,59 @@
 /* Add styles for the new conversational command responses */
 .greeting-response {
   margin-bottom: 15px;
+  font-size: 16px; /* Added font size */
+  line-height: 1.6; /* Added line height */
 }
 
 .greeting-response p {
-  margin-bottom: 8px;
+  margin-bottom: 12px; /* Increased from 8px */
+  color: var(--text-color); /* Ensure text is visible */
 }
 
 .command-suggestion {
   color: var(--text-color-alt);
   font-weight: bold;
-  background-color: rgba(0, 255, 255, 0.1);
-  padding: 2px 6px;
+  background-color: rgba(0, 255, 255, 0.15); /* Increased from 0.1 for better visibility */
+  padding: 3px 8px; /* Increased from 2px 6px */
   border-radius: 4px;
+}
+
+/* Smart Link styles */
+.smart-link {
+  background-color: rgba(0, 255, 255, 0.1); /* Increased from 0.05 for better visibility */
+  border-radius: 8px;
+  border-left: 3px solid var(--text-color-alt);
+  overflow: hidden;
+  margin: 15px 0; /* Increased from 10px 0 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for better visibility */
+}
+
+.smart-link-header {
+  background-color: rgba(0, 255, 255, 0.2); /* Increased from 0.1 for better visibility */
+  padding: 10px 15px; /* Increased from 8px 15px */
+  color: var(--text-color-alt);
+  font-weight: bold;
+  font-size: 16px; /* Added font size */
+}
+
+.smart-link-content {
+  padding: 18px; /* Increased from 15px */
+  font-size: 15px; /* Added font size */
+  line-height: 1.5; /* Added line height */
+}
+
+.smart-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px; /* Increased from 10px */
+  padding: 10px 14px; /* Increased from 8px 12px */
+  background-color: rgba(0, 255, 255, 0.15); /* Increased from 0.1 for better visibility */
+  border-radius: 6px; /* Increased from 4px */
+  color: var(--text-color-alt);
+  font-weight: bold; /* Added font weight */
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
 /* Responsive styles */
@@ -1056,5 +1104,62 @@
     padding: 10px 15px;
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* Add this to the end of the file */
+.thinking-indicator {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 20px;
+}
+.thinking-indicator div {
+  position: absolute;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-color);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.thinking-indicator div:nth-child(1) {
+  left: 8px;
+  animation: thinking1 0.6s infinite;
+}
+.thinking-indicator div:nth-child(2) {
+  left: 8px;
+  animation: thinking2 0.6s infinite;
+}
+.thinking-indicator div:nth-child(3) {
+  left: 32px;
+  animation: thinking2 0.6s infinite;
+}
+.thinking-indicator div:nth-child(4) {
+  left: 56px;
+  animation: thinking3 0.6s infinite;
+}
+@keyframes thinking1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes thinking3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes thinking2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
   }
 }
