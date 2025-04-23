@@ -1,6 +1,6 @@
 // Gemini API integration
-const GEMINI_API_KEY = "AIzaSyDHW0RuArvEuv78uawD0N3b_GHb33ZDIIk"
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"
+const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
 
 // Resume data to use as context
 const RESUME_CONTEXT = `
@@ -63,8 +63,31 @@ interface GeminiResponse {
   }[]
 }
 
+console.log("API KEY ",GEMINI_API_KEY);
+
+async function listGeminiModels() {
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1/models?key=${GEMINI_API_KEY}`
+    );
+
+    if (!response.ok) {
+      console.error("Error listing Gemini models:", await response.text());
+      return;
+    }
+
+    const data = await response.json();
+    console.log("Available Gemini Models:", data);
+  } catch (error) {
+    console.error("Error calling ListModels API:", error);
+  }
+}
+
 export async function askGemini(question: string): Promise<string> {
   try {
+
+
+
     const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
       method: "POST",
       headers: {
