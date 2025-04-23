@@ -22,6 +22,8 @@ export default function Help() {
     { name: "hello/hi", description: "Get a friendly greeting and brief introduction" },
     { name: "date/time", description: "Display the current date and time" },
     { name: "echo [text]", description: "Display the text you type after 'echo'" },
+    { name: "chatbot", description: "Switch to the modern chatbot interface" },
+    { name: "[project/platform name]", description: "Get a direct link to a project or platform" },
   ]
 
   return (
@@ -52,6 +54,8 @@ export default function Help() {
         <p>Type any command and press Enter to execute.</p>
         <p>Use the Up and Down arrow keys to navigate through command history.</p>
         <p>On mobile devices, use the Enter button to execute commands.</p>
+        <p>You can also try typing project names like "Fast7" or platforms like "GitHub" to get direct links.</p>
+        <p>Use the buttons in the top-right corner to switch between terminal/chatbot modes and dark/light themes.</p>
       </div>
     </motion.div>
   )

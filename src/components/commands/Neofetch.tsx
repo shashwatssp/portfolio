@@ -21,14 +21,14 @@ export default function Neofetch() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    // Draw radar chart background
-    ctx.fillStyle = "#111"
+    // Draw radar chart background - darker for better contrast
+    ctx.fillStyle = "#0a0a0a"
     ctx.beginPath()
     ctx.arc(canvas.width / 2, canvas.height / 2, 120, 0, Math.PI * 2)
     ctx.fill()
 
-    // Draw radar chart grid
-    ctx.strokeStyle = "#333"
+    // Draw radar chart grid - brighter for better visibility
+    ctx.strokeStyle = "#444"
     ctx.lineWidth = 1
     for (let i = 1; i <= 5; i++) {
       const radius = i * 24
@@ -52,8 +52,8 @@ export default function Neofetch() {
     const numSkills = skills.length
     const angleStep = (Math.PI * 2) / numSkills
 
-    // Draw skill axes
-    ctx.strokeStyle = "#444"
+    // Draw skill axes - brighter for better visibility
+    ctx.strokeStyle = "#666"
     ctx.lineWidth = 1
     for (let i = 0; i < numSkills; i++) {
       const angle = i * angleStep - Math.PI / 2
@@ -62,15 +62,15 @@ export default function Neofetch() {
       ctx.lineTo(canvas.width / 2 + Math.cos(angle) * 120, canvas.height / 2 + Math.sin(angle) * 120)
       ctx.stroke()
 
-      // Draw skill labels
+      // Draw skill labels - brighter for better visibility
       ctx.fillStyle = "#00ffff"
-      ctx.font = "12px monospace"
+      ctx.font = "bold 12px monospace"
       ctx.textAlign = "center"
       ctx.fillText(skills[i].name, canvas.width / 2 + Math.cos(angle) * 140, canvas.height / 2 + Math.sin(angle) * 140)
     }
 
-    // Draw skill data
-    ctx.fillStyle = "rgba(0, 255, 0, 0.5)"
+    // Draw skill data - brighter and more opaque for better visibility
+    ctx.fillStyle = "rgba(0, 255, 0, 0.6)"
     ctx.strokeStyle = "#00ff00"
     ctx.lineWidth = 2
     ctx.beginPath()
