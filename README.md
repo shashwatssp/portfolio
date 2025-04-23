@@ -1,30 +1,47 @@
-# Retro terminal portfolio
+# 🚀 Shashwat's Portfolio
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Welcome to my personal portfolio — a unique blend of terminal-style interface and interactive chatbot experience. Whether you're a tech-savvy explorer or someone who loves a good conversation, there's something here for you.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/shashwatssps-projects/v0-retro-terminal-portfolio)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/1misf26PVBt)
+🌐 **Live Demo**: [https://shashwatssp.vercel.app/](https://shashwatssp.vercel.app/)
 
-## Overview
+---
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## 🧩 Features
 
-## Deployment
+### 🖥 Terminal Mode
+- Feel the nostalgia of the command line.
+- Navigate through my work and journey with familiar commands.
+- Perfect for devs who love the old-school vibe.
 
-Your project is live at:
+### 🤖 Chatbot Mode
+- Have a friendly chat with a smart assistant.
+- Ask questions, explore my projects, or just say hi!
+- Designed for ease and interactive browsing.
 
-**[https://vercel.com/shashwatssps-projects/v0-retro-terminal-portfolio](https://vercel.com/shashwatssps-projects/v0-retro-terminal-portfolio)**
+### 🌗 Dark & Light Mode
+- Switch between a soothing dark theme and a crisp light mode.
+- Let your eyes choose what they love most.
 
-## Build your app
+---
 
-Continue building your app on:
+## 🛠 Tech Stack
 
-**[https://v0.dev/chat/projects/1misf26PVBt](https://v0.dev/chat/projects/1misf26PVBt)**
+- **Frontend**: React, Tailwind CSS
+- **Chatbot**: AI-powered interaction
+- **Deployment**: Vercel
 
-## How It Works
+---
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+
+---
+
+## 📫 Connect with Me
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/shashwatssp/)
+- 📧 Email: shashwtssp@gmail.com
+
+---
+
+Feel free to explore, interact, and leave feedback. Thanks for visiting!
+
+> _“Simplicity is the soul of efficiency.” – Austin Freeman_
