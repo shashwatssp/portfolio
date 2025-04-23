@@ -1,0 +1,1060 @@
+.terminal {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.command-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.prompt {
+  color: var(--text-color-alt);
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.command-input {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 14px;
+  outline: none;
+  flex-grow: 1;
+  caret-color: var(--text-color);
+}
+
+.command-output {
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+.ascii-header {
+  color: var(--text-color-alt);
+  font-size: 10px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  text-align: center;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* Help hint */
+.help-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(0, 255, 255, 0.05);
+  border-radius: 4px;
+  color: var(--text-color-dim);
+}
+
+/* Input container with mobile enter button */
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.mobile-enter-button {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid var(--text-color-dim);
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-left: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.mobile-enter-button:hover,
+.mobile-enter-button:focus {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: var(--text-color-alt);
+}
+
+/* Command-specific styles */
+.command-title {
+  color: var(--text-color-alt);
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+  font-size: 18px;
+}
+
+.terminal-tip {
+  margin-top: 15px;
+  font-style: italic;
+  color: var(--text-color-dim);
+}
+
+.tip-prefix {
+  color: var(--text-color-alt);
+  font-weight: bold;
+}
+
+/* About command styles */
+.about-section {
+  margin-bottom: 20px;
+}
+
+.about-section h3 {
+  color: var(--text-color-alt);
+  margin-bottom: 10px;
+}
+
+.education-item,
+.current-role {
+  padding: 15px;
+  border-left: 2px solid var(--text-color-alt);
+  margin-left: 10px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 0 4px 4px 0;
+}
+
+.education-header,
+.role-title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.education-degree,
+.role-title {
+  font-weight: bold;
+}
+
+.education-date,
+.role-period {
+  color: var(--text-color-dim);
+}
+
+.role-responsibilities {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.role-responsibilities li {
+  margin-bottom: 8px;
+}
+
+/* Experience command styles */
+.timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--text-color-dim);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -34px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--text-color-alt);
+  border: 2px solid var(--terminal-bg);
+}
+
+.timeline-content {
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.company-name {
+  color: var(--text-color-alt);
+  font-size: 16px;
+}
+
+.experience-period {
+  color: var(--text-color-dim);
+}
+
+.role-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.achievements-list {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.achievements-list li {
+  margin-bottom: 8px;
+}
+
+.achievements-list-resume {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.achievements-list-resume li {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.metrics-highlight {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.metrics-icon {
+  margin-right: 5px;
+}
+
+/* Extracurricular section */
+.extracurricular-section {
+  margin-top: 30px;
+}
+
+.extracurricular-item {
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid var(--text-color-alt);
+  margin-bottom: 20px;
+}
+
+.extracurricular-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.organization-name {
+  color: var(--text-color-alt);
+  font-size: 16px;
+}
+
+.extracurricular-period {
+  color: var(--text-color-dim);
+}
+
+.extracurricular-achievements {
+  padding-left: 20px;
+}
+
+.extracurricular-achievements li {
+  margin-bottom: 8px;
+}
+
+.experience-link {
+  margin-top: 10px;
+}
+
+/* Projects command styles */
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-item {
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid var(--text-color-alt);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.project-name {
+  color: var(--text-color-alt);
+  font-size: 16px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.project-action {
+  color: var(--text-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.project-action:hover {
+  color: var(--text-color-alt);
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+.youtube-action {
+  color: var(--youtube-color);
+}
+
+.youtube-action:hover {
+  color: var(--youtube-color);
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.project-description {
+  margin-bottom: 15px;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tech-badge {
+  padding: 5px 10px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text-color-alt);
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.project-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color-alt);
+  font-family: var(--font-family);
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.project-link-button:hover {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+.youtube-link {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: var(--youtube-color);
+}
+
+.youtube-link:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-container {
+  background-color: var(--terminal-bg);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+  color: var(--text-color-alt);
+  font-size: 18px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--text-color-alt);
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.modal-content {
+  padding: 15px;
+}
+
+.project-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-demo-header {
+  margin-bottom: 10px;
+}
+
+.project-demo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project-screenshot {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.demo-image {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.project-features {
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.project-features h4 {
+  color: var(--text-color-alt);
+  margin-bottom: 10px;
+}
+
+.project-features ul {
+  padding-left: 20px;
+}
+
+.project-features li {
+  margin-bottom: 8px;
+}
+
+.project-demo-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.demo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+  color: var(--text-color-alt);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.demo-link:hover {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+.demo-link.youtube-link {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: var(--youtube-color);
+}
+
+.demo-link.youtube-link:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Contact command styles */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.contact-icon {
+  color: var(--text-color-alt);
+  margin-bottom: 10px;
+}
+
+.contact-details h3 {
+  color: var(--text-color-alt);
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.contact-link {
+  color: var(--text-color);
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  cursor: pointer;
+  padding: 0;
+}
+
+.contact-link:hover {
+  color: var(--text-color-alt);
+  text-decoration: underline;
+}
+
+.coding-profiles {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.coding-profiles h3 {
+  color: var(--text-color-alt);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.coding-profile-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.coding-profile-link:hover {
+  color: var(--text-color-alt);
+  text-decoration: underline;
+}
+
+.contact-message {
+  margin-top: 20px;
+  font-style: italic;
+  color: var(--text-color-dim);
+}
+
+/* Help command styles */
+.commands-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.command-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.command-name {
+  color: var(--text-color-alt);
+  font-weight: bold;
+}
+
+.help-tip {
+  margin-top: 15px;
+  color: var(--text-color-dim);
+}
+
+/* Neofetch command styles */
+.neofetch-container {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.neofetch-logo {
+  flex-shrink: 0;
+}
+
+.ascii-small {
+  color: var(--text-color-alt);
+  font-size: 8px;
+  line-height: 1.2;
+  white-space: pre;
+}
+
+.neofetch-info {
+  flex-grow: 1;
+}
+
+.info-line {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.info-label {
+  color: var(--text-color-alt);
+  width: 120px;
+  font-weight: bold;
+}
+
+.skills-radar {
+  margin-bottom: 20px;
+}
+
+.skills-radar h3 {
+  color: var(--text-color-alt);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.radar-chart {
+  display: block;
+  margin: 0 auto;
+}
+
+.achievement-section h3 {
+  color: var(--text-color-alt);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.achievement-item {
+  text-align: center;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.achievement-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-color-alt);
+  margin-bottom: 5px;
+}
+
+.achievement-label {
+  color: var(--text-color-dim);
+  font-size: 14px;
+}
+
+.achievement-counter {
+  display: inline-block;
+}
+
+/* Resume command styles */
+.resume-command {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.resume-header {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.resume-name {
+  color: var(--text-color-alt);
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.resume-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background-color: rgba(0, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.contact-label {
+  color: var(--text-color-alt);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.contact-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  color: var(--text-color-alt);
+  text-decoration: underline;
+}
+
+.resume-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  color: var(--text-color-alt);
+  font-size: 18px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.education-item {
+  margin-bottom: 15px;
+}
+
+.experience-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid var(--text-color-alt);
+}
+
+.experience-details {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.experience-details li {
+  margin-bottom: 8px;
+}
+
+.skills-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skill-category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.skill-category-name {
+  color: var(--text-color-alt);
+  font-weight: bold;
+  min-width: 100px;
+}
+
+.project-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid var(--text-color-alt);
+}
+
+.project-title {
+  color: var(--text-color-alt);
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.project-link {
+  color: var(--text-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-link:hover {
+  color: var(--text-color-alt);
+  text-decoration: underline;
+}
+
+.project-tech {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.project-details {
+  padding-left: 20px;
+}
+
+.project-details li {
+  margin-bottom: 8px;
+}
+
+.achievement-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.achievement-link:hover {
+  color: var(--text-color-alt);
+  text-decoration: underline;
+}
+
+/* Coding Profiles command styles */
+.coding-profiles-command {
+  max-width: 100%;
+}
+
+.profiles-intro {
+  margin-bottom: 20px;
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.profile-card {
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+  padding: 15px;
+  border-left: 3px solid var(--text-color-alt);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.profile-icon {
+  color: var(--text-color-alt);
+}
+
+.profile-platform {
+  color: var(--text-color-alt);
+  font-size: 16px;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-username,
+.profile-rating {
+  font-size: 14px;
+}
+
+.username-label,
+.rating-label {
+  color: var(--text-color-alt);
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.profile-description {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.profile-link:hover {
+  color: var(--text-color-alt);
+  text-decoration: underline;
+}
+
+.achievements-highlight {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(0, 255, 0, 0.05);
+  border-radius: 4px;
+}
+
+.achievements-highlight h3 {
+  color: var(--text-color-alt);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Add styles for the new conversational command responses */
+.greeting-response {
+  margin-bottom: 15px;
+}
+
+.greeting-response p {
+  margin-bottom: 8px;
+}
+
+.command-suggestion {
+  color: var(--text-color-alt);
+  font-weight: bold;
+  background-color: rgba(0, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .skills-grid,
+  .contact-grid,
+  .achievements-grid,
+  .profiles-grid,
+  .resume-contact {
+    grid-template-columns: 1fr;
+  }
+
+  .neofetch-container {
+    flex-direction: column;
+  }
+
+  .ascii-header {
+    font-size: 6px;
+  }
+
+  .ascii-small {
+    font-size: 6px;
+  }
+
+  .command-item {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .skill-category {
+    flex-direction: column;
+  }
+
+  .project-demo-footer {
+    flex-direction: column;
+  }
+
+  .command-line {
+    flex-wrap: wrap;
+  }
+
+  .command-input {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .input-container {
+    flex-wrap: wrap;
+  }
+
+  .mobile-enter-button {
+    margin-top: 8px;
+    margin-left: auto;
+  }
+
+  /* Make terminal content use full width on mobile */
+  .terminal-content {
+    padding: 10px;
+    width: 100%;
+  }
+
+  /* Ensure the terminal window uses full width on mobile */
+  .terminal-window {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Make project links more touch-friendly */
+  .project-link-button,
+  .demo-link {
+    padding: 10px 15px;
+    width: 100%;
+    justify-content: center;
+  }
+}

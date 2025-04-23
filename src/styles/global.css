@@ -1,0 +1,176 @@
+/* Remove the Google Fonts import that's causing the error */
+/* @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap"); */
+
+:root {
+  --bg-color: #0a0a0a;
+  --terminal-bg: #121212;
+  --terminal-header: #1a1a1a;
+  --text-color: #00ff00;
+  --text-color-alt: #00ffff;
+  --text-color-dim: #00aa00;
+  --accent-color: #00ffff;
+  --border-color: #333;
+  --youtube-color: #ff0000;
+  /* Use system monospace fonts instead of relying on Google Fonts */
+  --font-family: "Courier New", Courier, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 900px;
+  height: 90vh;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-window {
+  width: 100%;
+  height: 100%;
+  background-color: var(--terminal-bg);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.terminal-header {
+  background-color: var(--terminal-header);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-button.close {
+  background-color: #ff5f56;
+}
+
+.terminal-button.minimize {
+  background-color: #ffbd2e;
+}
+
+.terminal-button.maximize {
+  background-color: #27c93f;
+}
+
+.terminal-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-color-dim);
+}
+
+.terminal-content {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  outline: none;
+  width: 100%;
+}
+
+.intro-text {
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.typing-effect {
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: var(--text-color);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--terminal-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-color-dim);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+
+  .app-container {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    padding: 0;
+  }
+
+  .terminal-window {
+    border-radius: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .terminal-content {
+    padding: 10px;
+    width: 100%;
+  }
+}
