@@ -15,7 +15,7 @@ import Neofetch from "./commands/Neofetch"
 import Resume from "./commands/Resume"
 import CodingProfiles from "./commands/CodingProfiles"
 import { useMobile } from "../hooks/useMobile"
-import { Send, HelpCircle, ExternalLink } from "lucide-react"
+import { HelpCircle, ExternalLink } from "lucide-react"
 import "../styles/terminal.css"
 import { useTheme } from "../hooks/useTheme"
 import { useInterfaceMode } from "../hooks/useInterfaceMode"
@@ -122,184 +122,222 @@ export default function Terminal() {
     // Check for keywords in the command
     const keywordCheck = checkForKeywords(trimmedCommand)
 
-    switch (trimmedCommand) {
-      case "about":
-        output = <About />
-        break
-      case "skills":
-        output = <Skills />
-        break
-      case "experience":
-        output = <Experience />
-        break
-      case "projects":
-        output = <Projects />
-        break
-      case "contact":
-        output = <Contact />
-        break
-      case "help":
-        output = <Help />
-        break
-      case "clear":
-        setCommandResults([])
-        return
-      case "neofetch":
-        output = <Neofetch />
-        break
-      case "resume":
-        output = <Resume />
-        break
-      case "coding":
-      case "profiles":
-      case "coding profiles":
-        output = <CodingProfiles />
-        break
-      case "chatbot":
-      case "switch mode":
-      case "switch interface":
-      case "modern":
-        setInterfaceMode("chatbot")
-        output = "Switching to chatbot interface..."
-        break
-      // Add conversational commands
-      case "hi":
-      case "hello":
-      case "hey":
-      case "hola":
-      case "greetings":
-        output = (
-          <div className="greeting-response">
-            <p>Hello! I'm Shashwat Shagun Pandey, an Associate Software Engineer at Lowe's.</p>
-            <p>I'm passionate about web development, app development, and competitive programming.</p>
-            <p>
-              Type <span className="command-suggestion">help</span> to see what you can ask me about!
-            </p>
-          </div>
-        )
-        break
-      case "who are you":
-      case "introduce yourself":
-      case "tell me about yourself":
-        output = (
-          <div className="greeting-response">
-            <p>I'm Shashwat Shagun Pandey, a Computer Science graduate from MMMUT and currently working at Lowe's.</p>
-            <p>I specialize in React, Flutter, and have solved 1600+ DSA problems across various platforms.</p>
-            <p>
-              Type <span className="command-suggestion">about</span> or{" "}
-              <span className="command-suggestion">experience</span> to learn more about my background.
-            </p>
-          </div>
-        )
-        break
-      // Add more utility commands
-      case "date":
-      case "time":
-        output = <div>Current date and time: {new Date().toLocaleString()}</div>
-        break
-      case "echo":
-        output = "Echo command requires text. Try 'echo hello world'"
-        break
-      // Handle echo with text
-      default:
-        if (trimmedCommand.startsWith("echo ")) {
-          output = trimmedCommand.substring(5)
-        } else if (keywordCheck.found) {
-          // If a keyword is found, show a smart link
-          output = <SmartLink keyword={keywordCheck.keyword} url={keywordCheck.url} type={keywordCheck.type} />
-        } else if (trimmedCommand.includes("resume") || trimmedCommand.includes("cv")) {
-          output = (
-            <div>
-              <p>
-                You can view my resume by typing <span className="command-suggestion">resume</span>.
-              </p>
-              <p>
-                For my experience, type <span className="command-suggestion">experience</span>.
-              </p>
-              <p>
-                For my education and current role, type <span className="command-suggestion">about</span>.
-              </p>
-            </div>
-          )
-        } else if (
-          trimmedCommand.includes("contact") ||
-          trimmedCommand.includes("email") ||
-          trimmedCommand.includes("reach")
-        ) {
-          output = (
-            <div>
-              <p>
-                You can contact me by typing <span className="command-suggestion">contact</span> to see all my contact
-                information.
-              </p>
-            </div>
-          )
-        } else if (
-          trimmedCommand.includes("project") ||
-          trimmedCommand.includes("work") ||
-          trimmedCommand.includes("portfolio")
-        ) {
-          output = (
-            <div>
-              <p>
-                You can view my projects by typing <span className="command-suggestion">projects</span>.
-              </p>
-            </div>
-          )
-        } else if (
-          trimmedCommand.includes("skill") ||
-          trimmedCommand.includes("tech") ||
-          trimmedCommand.includes("language")
-        ) {
-          output = (
-            <div>
-              <p>
-                You can view my skills by typing <span className="command-suggestion">skills</span>.
-              </p>
-            </div>
-          )
-        } else if (trimmedCommand.includes("thank")) {
-          output = (
-            <div>
-              <p>You're welcome! Let me know if there's anything else I can help you with.</p>
-            </div>
-          )
-        } else if (trimmedCommand.includes("coding") || trimmedCommand.includes("profile")) {
-          output = (
-            <div>
-              <p>
-                You can view my coding profiles by typing <span className="command-suggestion">coding profiles</span>.
-              </p>
-            </div>
-          )
-        } else if (
-          trimmedCommand.includes("chatbot") ||
-          trimmedCommand.includes("switch") ||
-          trimmedCommand.includes("mode")
-        ) {
+    // Create a unique ID for this command result
+    const commandResultId = Date.now()
+
+    // Add the command to results immediately
+    setCommandResults((prev) => [
+      ...prev,
+      {
+        id: commandResultId,
+        command: trimmedCommand,
+        output: "Processing...", // Temporary output while processing
+      },
+    ])
+
+    // Scroll to the command immediately
+    setTimeout(() => {
+      const commandElement = document.getElementById(`command-${commandResultId}`)
+      if (commandElement) {
+        commandElement.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    }, 50)
+
+    // Process the command with a slight delay to allow scrolling to happen
+    setTimeout(() => {
+      switch (trimmedCommand) {
+        case "about":
+          output = <About />
+          break
+        case "skills":
+          output = <Skills />
+          break
+        case "experience":
+          output = <Experience />
+          break
+        case "projects":
+          output = <Projects />
+          break
+        case "contact":
+          output = <Contact />
+          break
+        case "help":
+          output = <Help />
+          break
+        case "clear":
+          setCommandResults([])
+          return
+        case "neofetch":
+          output = <Neofetch />
+          break
+        case "resume":
+          output = <Resume />
+          break
+        case "coding":
+        case "profiles":
+        case "coding profiles":
+          output = <CodingProfiles />
+          break
+        case "chatbot":
+        case "switch mode":
+        case "switch interface":
+        case "modern":
           setInterfaceMode("chatbot")
           output = "Switching to chatbot interface..."
-        } else {
-          output = `Command not found: ${trimmedCommand}. Type 'help' to see available commands.`
-        }
-    }
-
-    const newCommandResult = {
-      id: Date.now(),
-      command: trimmedCommand,
-      output,
-    }
-
-    setCommandResults((prev) => [...prev, newCommandResult])
-    setCurrentCommand("")
-    setHistoryIndex(-1)
-
-    // Focus the input after executing a command
-    setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.focus()
+          break
+        // Add conversational commands
+        case "hi":
+        case "hello":
+        case "hey":
+        case "hola":
+        case "greetings":
+          output = (
+            <div className="greeting-response">
+              <p>Hello! I'm Shashwat Shagun Pandey, an Associate Software Engineer at Lowe's.</p>
+              <p>I'm passionate about web development, app development, and competitive programming.</p>
+              <p>
+                Type <span className="command-suggestion">help</span> to see what you can ask me about!
+              </p>
+            </div>
+          )
+          break
+        case "who are you":
+        case "introduce yourself":
+        case "tell me about yourself":
+          output = (
+            <div className="greeting-response">
+              <p>I'm Shashwat Shagun Pandey, a Computer Science graduate from MMMUT and currently working at Lowe's.</p>
+              <p>I specialize in React, Flutter, and have solved 1600+ DSA problems across various platforms.</p>
+              <p>
+                Type <span className="command-suggestion">about</span> or{" "}
+                <span className="command-suggestion">experience</span> to learn more about my background.
+              </p>
+            </div>
+          )
+          break
+        // Add more utility commands
+        case "date":
+        case "time":
+          output = <div>Current date and time: {new Date().toLocaleString()}</div>
+          break
+        case "echo":
+          output = "Echo command requires text. Try 'echo hello world'"
+          break
+        // Handle echo with text
+        default:
+          if (trimmedCommand.startsWith("echo ")) {
+            output = trimmedCommand.substring(5)
+          } else if (keywordCheck.found) {
+            // If a keyword is found, show a smart link
+            output = <SmartLink keyword={keywordCheck.keyword} url={keywordCheck.url} type={keywordCheck.type} />
+          } else if (trimmedCommand.includes("resume") || trimmedCommand.includes("cv")) {
+            output = (
+              <div>
+                <p>
+                  You can view my resume by typing <span className="command-suggestion">resume</span>.
+                </p>
+                <p>
+                  For my experience, type <span className="command-suggestion">experience</span>.
+                </p>
+                <p>
+                  For my education and current role, type <span className="command-suggestion">about</span>.
+                </p>
+              </div>
+            )
+          } else if (
+            trimmedCommand.includes("contact") ||
+            trimmedCommand.includes("email") ||
+            trimmedCommand.includes("reach")
+          ) {
+            output = (
+              <div>
+                <p>
+                  You can contact me by typing <span className="command-suggestion">contact</span> to see all my contact
+                  information.
+                </p>
+              </div>
+            )
+          } else if (
+            trimmedCommand.includes("project") ||
+            trimmedCommand.includes("work") ||
+            trimmedCommand.includes("portfolio")
+          ) {
+            output = (
+              <div>
+                <p>
+                  You can view my projects by typing <span className="command-suggestion">projects</span>.
+                </p>
+              </div>
+            )
+          } else if (
+            trimmedCommand.includes("skill") ||
+            trimmedCommand.includes("tech") ||
+            trimmedCommand.includes("language")
+          ) {
+            output = (
+              <div>
+                <p>
+                  You can view my skills by typing <span className="command-suggestion">skills</span>.
+                </p>
+              </div>
+            )
+          } else if (trimmedCommand.includes("thank")) {
+            output = (
+              <div>
+                <p>You're welcome! Let me know if there's anything else I can help you with.</p>
+              </div>
+            )
+          } else if (trimmedCommand.includes("coding") || trimmedCommand.includes("profile")) {
+            output = (
+              <div>
+                <p>
+                  You can view my coding profiles by typing <span className="command-suggestion">coding profiles</span>.
+                </p>
+              </div>
+            )
+          } else if (
+            trimmedCommand.includes("chatbot") ||
+            trimmedCommand.includes("switch") ||
+            trimmedCommand.includes("mode")
+          ) {
+            setInterfaceMode("chatbot")
+            output = "Switching to chatbot interface..."
+          } else {
+            output = `Command not found: ${trimmedCommand}. Type 'help' to see available commands.`
+          }
       }
-    }, 0)
+
+      // Update the command result with the actual output
+      setCommandResults((prev) =>
+        prev.map((result) =>
+          result.id === commandResultId
+            ? {
+                id: commandResultId,
+                command: trimmedCommand,
+                output,
+              }
+            : result,
+        ),
+      )
+
+      // Scroll to the command result after updating
+      setTimeout(() => {
+        const commandElement = document.getElementById(`command-${commandResultId}`)
+        if (commandElement) {
+          commandElement.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
+      }, 50)
+
+      setCurrentCommand("")
+      setHistoryIndex(-1)
+
+      // Focus the input after executing a command
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus()
+        }
+      }, 100)
+    }, 100)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -323,10 +361,18 @@ export default function Terminal() {
     }
   }
 
+  // Handle input change
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setCurrentCommand(value)
+  }
+
   useEffect(() => {
     // Auto-scroll to the top of the latest output when new commands are added
     if (latestOutputRef.current) {
-      latestOutputRef.current.scrollIntoView({ behavior: "smooth", block: "start" })
+      setTimeout(() => {
+        latestOutputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+      }, 100)
     }
   }, [commandResults])
 
@@ -338,7 +384,7 @@ export default function Terminal() {
       {commandResults.map((result, index) => (
         <div
           key={result.id}
-          ref={index === commandResults.length - 1 ? latestOutputRef : null}
+          id={`command-${result.id}`} // Added ID for scrolling
           className="command-result"
         >
           <div className="command-line">
@@ -361,7 +407,7 @@ export default function Terminal() {
         <CommandInput
           ref={inputRef}
           value={currentCommand}
-          onChange={(e) => setCurrentCommand(e.target.value)}
+          onChange={handleInputChange}
           onSubmit={() => executeCommand(currentCommand)}
           onKeyDown={handleKeyDown}
         />
@@ -371,7 +417,7 @@ export default function Terminal() {
             onClick={() => executeCommand(currentCommand)}
             aria-label="Execute command"
           >
-            <Send size={16} />
+            Enter
           </button>
         )}
       </div>

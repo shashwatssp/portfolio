@@ -45,7 +45,7 @@ const CommandInput = forwardRef<HTMLInputElement, CommandInputProps>(
     }, [])
 
     return (
-      <div className="command-line input-line">
+      <div className="command-line-container">
         <span className="prompt">shashwat@portfolio:~$</span>
         <input
           ref={(node) => {

@@ -1,6 +1,6 @@
 "use client"
 
-import type React from "react"
+import React from "react"
 
 import { useState, useEffect, createContext, useContext } from "react"
 
@@ -32,10 +32,10 @@ export function InterfaceModeProvider({ children }: { children: React.ReactNode 
     localStorage.setItem("interfaceMode", mode)
   }
 
-  return (
-    <InterfaceModeContext.Provider value={{ interfaceMode, setInterfaceMode: setMode }}>
-      {children}
-    </InterfaceModeContext.Provider>
+  return React.createElement(
+    InterfaceModeContext.Provider,
+    { value: { interfaceMode, setInterfaceMode: setMode } },
+    children,
   )
 }
 
