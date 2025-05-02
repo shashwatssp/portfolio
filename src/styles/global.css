@@ -220,6 +220,7 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative; /* Added for proper positioning */
 }
 
 .chatbot-header {
@@ -228,13 +229,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.chatbot-header h2 {
-  color: var(--text-color-alt);
-  font-size: 20px;
-  margin: 0;
-  font-weight: bold;
+  position: sticky; /* Changed from static */
+  top: 0;
+  z-index: 10;
+  background-color: var(--terminal-bg); /* Added background */
 }
 
 .switch-interface-button {
@@ -247,11 +245,25 @@ body {
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .switch-interface-button:hover {
   background-color: rgba(0, 255, 255, 0.2);
   color: var(--text-color-alt);
+}
+
+/* Add a style for the button text that hides on small screens */
+.button-text {
+  display: inline;
+}
+
+@media (max-width: 600px) {
+  .button-text {
+    display: none;
+  }
 }
 
 .messages-container {
@@ -261,6 +273,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px; /* Increased from 15px */
+  padding-bottom: 20px; /* Added to ensure space at bottom */
+  margin-bottom: 0; /* Reset margin */
+  height: calc(100% - 130px); /* Adjusted to account for header and input */
 }
 
 .message {
@@ -308,64 +323,363 @@ body {
   background-color: rgba(0, 255, 255, 0.1);
 }
 
+/* Redesigned chatbot input container */
 .chatbot-input-container {
-  padding: 15px;
+  padding: 20px;
+  background-color: var(--terminal-header);
   border-top: 1px solid var(--border-color);
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 16px;
+  position: sticky; /* Changed from relative */
+  bottom: 0;
+  z-index: 10;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 8px 8px;
+  background-color: var(--terminal-header); /* Added background */
 }
 
 .chatbot-input {
   flex-grow: 1;
-  padding: 12px 15px; /* Increased from 10px 15px */
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
+  height: 52px;
+  padding: 0 20px;
+  border-radius: 26px;
+  border: 2px solid var(--border-color);
   background-color: var(--terminal-bg);
   color: var(--text-color);
   font-family: var(--font-family);
-  font-size: 16px; /* Increased from 14px */
+  font-size: 16px;
   outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .chatbot-input:focus {
   border-color: var(--text-color-alt);
+  box-shadow: 0 4px 16px rgba(0, 255, 255, 0.2);
 }
 
-.chatbot-send-button {
-  width: 44px; /* Increased from 40px */
-  height: 44px; /* Increased from 40px */
+.chatbot-input::placeholder {
+  color: var(--text-color-dim);
+  opacity: 0.7;
+}
+
+/* Voice controls container */
+.voice-controls {
+  display: flex;
+  align-items: center;
+}
+
+/* Redesigned voice button */
+.voice-button {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background-color: var(--text-color-alt);
-  color: var(--terminal-bg);
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--terminal-bg);
+  color: var(--text-color-alt);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.voice-button:hover {
+  transform: scale(1.05);
+  border-color: var(--text-color-alt);
+  box-shadow: 0 4px 16px rgba(0, 255, 255, 0.2);
+}
+
+.voice-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.voice-button.listening {
+  background-color: rgba(255, 95, 86, 0.2);
+  border-color: #ff5f56;
+  color: #ff5f56;
+  animation: pulse 1.5s infinite;
+}
+
+.voice-button.speaking {
+  background-color: rgba(39, 201, 63, 0.2);
+  border-color: #27c93f;
+  color: #27c93f;
+  animation: pulse 1.5s infinite;
+}
+
+/* Redesigned send button */
+.chatbot-send-button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--terminal-bg);
+  color: var(--text-color-alt);
+  border: 2px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .chatbot-send-button:hover {
-  background-color: var(--text-color);
+  transform: scale(1.05);
+  border-color: var(--text-color-alt);
+  box-shadow: 0 4px 16px rgba(0, 255, 255, 0.2);
 }
 
 .chatbot-send-button:disabled {
-  background-color: var(--border-color);
+  opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
+/* Voice button container */
+.voice-button-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Remove tooltip styles that are no longer needed */
+.voice-tooltip {
+  display: none;
+}
+
+.voice-status-indicator {
+  display: none;
+}
+
+/* Browser compatibility message */
+.browser-compatibility-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: rgba(255, 95, 86, 0.1);
+  border-radius: 4px;
+  color: var(--text-color);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.browser-compatibility-message svg {
+  color: #ff5f56;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+
+  .app-container {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    padding: 0;
+  }
+
+  .terminal-window {
+    border-radius: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .terminal-content {
+    padding: 10px;
+    width: 100%;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .chatbot-skills-grid,
+  .coursework-list {
+    grid-template-columns: 1fr;
+  }
+
+  .suggestion-buttons,
+  .chatbot-quick-suggestions {
+    flex-direction: column;
+  }
+
+  /* Ensure terminal header is visible on mobile */
+  .terminal-header {
+    padding: 12px;
+    margin-top: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .terminal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  .switch-interface-button {
+    padding: 8px;
+  }
+
+  .terminal-buttons {
+    display: flex;
+    margin-right: 10px;
+  }
+
+  .terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+
+  .terminal-title {
+    display: block;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+  }
+
+  .terminal-controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .theme-toggle-button,
+  .interface-toggle-button {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+  }
+
+  /* Mobile-specific styles for the chatbot input area */
+  @media (max-width: 768px) {
+    .chatbot-input-container {
+      padding: 16px;
+      gap: 12px;
+      border-radius: 0;
+    }
+
+    .chatbot-input {
+      height: 48px;
+      font-size: 15px;
+      padding: 0 16px;
+    }
+
+    .voice-button,
+    .chatbot-send-button {
+      width: 48px;
+      height: 48px;
+    }
+
+    /* Ensure the voice tooltip doesn't overflow on small screens */
+    .voice-tooltip {
+      max-width: 200px;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  /* Even smaller screens */
+  @media (max-width: 480px) {
+    .chatbot-input-container {
+      padding: 12px;
+      gap: 8px;
+    }
+
+    .chatbot-input {
+      height: 44px;
+      font-size: 14px;
+      padding: 0 14px;
+    }
+
+    .voice-button,
+    .chatbot-send-button {
+      width: 44px;
+      height: 44px;
+    }
+
+    .voice-button svg,
+    .chatbot-send-button svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+/* Smart Link styles */
+.smart-link {
+  background-color: rgba(0, 255, 255, 0.1); /* Increased from 0.05 for better visibility */
+  border-radius: 8px;
+  border-left: 3px solid var(--text-color-alt);
+  overflow: hidden;
+  margin: 15px 0; /* Increased from 10px 0 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for better visibility */
+}
+
+.smart-link-header {
+  background-color: rgba(0, 255, 255, 0.2); /* Increased from 0.1 for better visibility */
+  padding: 10px 15px; /* Increased from 8px 15px */
+  color: var(--text-color-alt);
+  font-weight: bold;
+  font-size: 16px; /* Added font size */
+}
+
+.smart-link-content {
+  padding: 18px; /* Increased from 15px */
+  font-size: 15px; /* Added font size */
+  line-height: 1.5; /* Added line height */
+}
+
+.smart-link-content p {
+  color: var(--text-color); /* Explicitly set color to ensure visibility */
+}
+
+.smart-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px; /* Increased from 10px */
+  padding: 10px 14px; /* Increased from 8px 12px */
+  background-color: rgba(0, 255, 255, 0.15); /* Increased from 0.1 for better visibility */
+  border-radius: 6px; /* Increased from 4px */
+  color: var(--text-color-alt);
+  font-weight: bold; /* Added font weight */
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+/* Chatbot link styles */
 .chatbot-link {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   color: var(--text-color-alt);
   text-decoration: none;
-  margin-top: 10px; /* Increased from 8px */
-  padding: 8px 12px; /* Increased from 5px 10px */
+  margin-top: 10px;
+  padding: 8px 12px;
   background-color: rgba(0, 255, 255, 0.1);
-  border-radius: 6px; /* Increased from 4px */
+  border-radius: 6px;
   transition: all 0.2s;
-  font-weight: bold; /* Added font weight */
+  font-weight: bold;
 }
 
 .chatbot-link:hover {
@@ -603,52 +917,378 @@ body {
   background-color: rgba(0, 255, 255, 0.2);
 }
 
-/* Smart Link styles */
-.smart-link {
-  background-color: rgba(0, 255, 255, 0.1); /* Increased from 0.05 for better visibility */
-  border-radius: 8px;
-  border-left: 3px solid var(--text-color-alt);
+/* Matrix loading styles */
+.matrix-loading {
+  position: relative;
+  width: 100%;
+  height: 150px;
   overflow: hidden;
-  margin: 15px 0; /* Increased from 10px 0 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Added shadow for better visibility */
+  border-radius: 8px;
+  margin: 10px 0;
 }
 
-.smart-link-header {
-  background-color: rgba(0, 255, 255, 0.2); /* Increased from 0.1 for better visibility */
-  padding: 10px 15px; /* Increased from 8px 15px */
-  color: var(--text-color-alt);
-  font-weight: bold;
-  font-size: 16px; /* Added font size */
+.thinking-indicator-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.smart-link-content {
-  padding: 18px; /* Increased from 15px */
-  font-size: 15px; /* Added font size */
-  line-height: 1.5; /* Added line height */
-}
-
-.smart-link-content p {
-  color: var(--text-color); /* Explicitly set color to ensure visibility */
-}
-
-.smart-link-button {
-  display: inline-flex;
+.thinking-indicator {
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 6px;
-  margin-top: 12px; /* Increased from 10px */
-  padding: 10px 14px; /* Increased from 8px 12px */
-  background-color: rgba(0, 255, 255, 0.15); /* Increased from 0.1 for better visibility */
-  border-radius: 6px; /* Increased from 4px */
+}
+
+.thinking-indicator div {
+  width: 8px;
+  height: 8px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  animation: thinking 1.4s infinite ease-in-out both;
+}
+
+.thinking-indicator div:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.thinking-indicator div:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes thinking {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Add these styles to the end of your global.css file */
+
+/* Highlighted items */
+.highlighted-project {
+  border-left: 3px solid #00ffff !important;
+  background-color: rgba(0, 255, 255, 0.15) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.highlighted-experience {
+  border-left: 3px solid #00ffff !important;
+  background-color: rgba(0, 255, 255, 0.15) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.highlighted-platform {
+  background-color: rgba(0, 255, 255, 0.15) !important;
+  border-left: 3px solid #00ffff !important;
+  padding-left: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Initial matrix overlay */
+.initial-matrix-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeOut 0.5s ease-in-out 2.5s forwards;
+}
+
+.matrix-loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #00ff00;
+  font-family: var(--font-family);
+  font-size: 24px;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  z-index: 1001;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Matrix thinking state */
+.matrix-thinking {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.matrix-thinking-text {
+  color: #00ff00;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+/* Ensure the fullscreen matrix covers the entire screen */
+.fullscreen-matrix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+/* Terminal input container styling - reverted to previous version */
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+  padding: 5px;
+  background-color: var(--terminal-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Command line container to ensure prompt and input are on the same line */
+.command-line-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.prompt {
   color: var(--text-color-alt);
-  font-weight: bold; /* Added font weight */
-  text-decoration: none;
+  margin-right: 8px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.command-input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: 16px;
+  padding: 5px 0;
+  outline: none;
+  caret-color: var(--text-color);
+}
+
+/* Update the command-line-container to ensure consistent styling */
+.command-line-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 16px; /* Ensure consistent font size */
+}
+
+.prompt {
+  color: var(--text-color-alt);
+  margin-right: 8px;
+  white-space: nowrap;
+  user-select: none;
+  font-family: var(--font-family);
+  font-size: inherit; /* Inherit from parent */
+}
+
+.command-input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: inherit; /* Inherit from parent */
+  padding: 5px 0;
+  outline: none;
+  caret-color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* Add specific mobile styles to ensure consistency */
+@media (max-width: 768px) {
+  .command-line-container {
+    font-size: 16px; /* Explicit font size for mobile */
+  }
+
+  .prompt,
+  .command-input {
+    font-size: inherit; /* Ensure they match */
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 375px) {
+  .command-line-container {
+    font-size: 14px; /* Slightly smaller for very small screens */
+  }
+}
+
+/* Update the mobile-enter-button style to look more like a physical Enter key */
+.mobile-enter-button {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid var(--text-color-dim);
+  color: var(--text-color);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 0 rgba(0, 255, 0, 0.2);
   transition: all 0.2s;
 }
 
-/* Responsive styles */
+.mobile-enter-button:hover,
+.mobile-enter-button:focus {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: var(--text-color-alt);
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(0, 255, 0, 0.2);
+}
+
+.mobile-enter-button:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* Command result styling */
+.command-result {
+  margin-bottom: 15px;
+  scroll-margin-top: 20px;
+}
+
+.command-line {
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.prompt {
+  color: var(--text-color-alt);
+  margin-right: 5px;
+}
+
+.command-output {
+  color: var(--text-color);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Help hint styling */
+.help-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(0, 255, 255, 0.05);
+  border-radius: 4px;
+  color: var(--text-color-dim);
+}
+
+.command-suggestion {
+  color: var(--text-color-alt);
+  font-weight: bold;
+  background-color: rgba(0, 255, 255, 0.1);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Remove the now-unused switch-interface-hint styles */
+
+@media (max-width: 768px) {
+  .terminal-header {
+    padding: 12px;
+    margin-top: 5px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .terminal-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+
+  .switch-interface-button {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-header {
+    padding: 10px 8px;
+  }
+
+  .terminal-controls {
+    gap: 6px;
+  }
+
+  .switch-interface-button {
+    padding: 6px;
+  }
+
+  .terminal-title {
+    font-size: 14px;
+  }
+}
+
+/* Add these improved responsive styles */
+/* Enhanced responsive styles */
 @media (max-width: 768px) {
   body {
     padding: 0;
+    margin: 0;
+    overflow: hidden;
   }
 
   .app-container {
@@ -657,30 +1297,327 @@ body {
     height: 100vh;
     max-height: none;
     padding: 0;
+    margin: 0;
   }
 
   .terminal-window {
     border-radius: 0;
     height: 100%;
     width: 100%;
+    box-shadow: none;
+  }
+
+  /* Improve header visibility on mobile */
+  .terminal-header {
+    padding: 12px;
+    margin-top: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Ensure chatbot header has proper spacing */
+  .chatbot-header {
+    padding: 12px;
+    height: auto;
+    min-height: 48px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Improve input container on mobile */
+  .chatbot-input-container {
+    padding: 12px;
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+  }
+
+  /* Ensure messages container takes available space */
+  .messages-container {
+    height: calc(100vh - 48px - 76px); /* Viewport height minus header and input container */
+    padding: 10px;
+  }
+
+  /* Make terminal content take full height */
+  .terminal-content {
+    height: calc(100vh - 48px);
+    padding: 10px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .terminal-header {
+    padding: 10px 8px;
+  }
+
+  .terminal-buttons {
+    margin-right: 8px;
+  }
+
+  .terminal-button {
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+  }
+
+  .terminal-controls {
+    gap: 5px;
+  }
+
+  .theme-toggle-button,
+  .switch-interface-button {
+    padding: 6px;
+    min-width: 32px;
+    height: 32px;
+  }
+
+  /* Smaller input elements for very small screens */
+  .chatbot-input {
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .voice-button,
+  .chatbot-send-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Adjust message bubbles for small screens */
+  .message {
+    max-width: 95%;
+  }
+
+  .message-avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .message-content {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Fix for iPhone SE and other very small devices */
+@media (max-width: 375px) {
+  .terminal-title {
+    font-size: 12px;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .terminal-buttons {
+    margin-right: 5px;
+  }
+
+  .terminal-button {
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+  }
+
+  .theme-toggle-button,
+  .switch-interface-button {
+    min-width: 28px;
+    height: 28px;
+    padding: 4px;
+  }
+
+  .chatbot-input-container {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .chatbot-input {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .voice-button,
+  .chatbot-send-button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Fix for landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .terminal-header {
+    padding: 8px;
   }
 
   .terminal-content {
+    height: calc(100vh - 40px);
+  }
+
+  .chatbot-input-container {
+    padding: 8px;
+  }
+
+  .messages-container {
+    height: calc(100vh - 40px - 60px);
+    padding: 8px;
+  }
+
+  /* Adjust component spacing in landscape */
+  .chatbot-skills,
+  .chatbot-experience,
+  .chatbot-projects,
+  .chatbot-achievements,
+  .chatbot-education,
+  .chatbot-neofetch {
     padding: 10px;
-    width: 100%;
+    margin-top: 10px;
   }
+}
 
-  .message {
-    max-width: 90%;
+/* Fix for notched phones */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .app-container {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
+}
 
-  .chatbot-skills-grid,
-  .coursework-list {
-    grid-template-columns: 1fr;
-  }
-
-  .suggestion-buttons,
-  .chatbot-quick-suggestions {
+/* Mobile-specific styles for the chatbot layout */
+@media (max-width: 768px) {
+  .chatbot-container {
+    display: flex;
     flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
   }
+
+  .chatbot-header {
+    flex-shrink: 0;
+    height: auto;
+    min-height: 48px;
+    padding: 10px;
+  }
+
+  .messages-container {
+    flex: 1;
+    overflow-y: auto;
+    height: auto; /* Let it take available space */
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+
+  .chatbot-input-container {
+    flex-shrink: 0;
+    padding: 10px;
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-height: 500px) {
+  .chatbot-header {
+    padding: 8px;
+    min-height: 40px;
+  }
+
+  .chatbot-input-container {
+    padding: 8px;
+  }
+
+  .messages-container {
+    padding: 8px;
+  }
+}
+
+/* Add these styles to fix the layout issues */
+
+/* Fix for iOS Safari and other mobile browsers */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Ensure the app container takes full height */
+.app-container {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Fix for the terminal window */
+.terminal-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Fix for the terminal content */
+.terminal-content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Fix for the chatbot container */
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Fix for the messages container */
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  padding-bottom: 20px; /* Space at the bottom */
+}
+
+/* Fix for the chatbot input container */
+.chatbot-input-container {
+  flex-shrink: 0;
+}
+
+/* Fix for iOS input focus issues */
+input,
+textarea,
+button {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+  .chatbot-input-container,
+  .input-container {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Fix for the message scrolling */
+.message {
+  scroll-margin-top: 70px; /* Ensure messages are visible below the header */
+}
+
+/* Fix for the command result scrolling */
+.command-result {
+  scroll-margin-top: 20px; /* Ensure command results are visible */
 }

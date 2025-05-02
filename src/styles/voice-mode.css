@@ -1,0 +1,102 @@
+/* Voice button styles */
+.voice-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.voice-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--text-color-alt);
+  color: var(--terminal-bg);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.voice-button:hover {
+  background-color: var(--text-color);
+}
+
+.voice-button:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+}
+
+.voice-button.listening {
+  animation: pulse 1.5s infinite;
+  background-color: #ff5f56;
+}
+
+.voice-button.speaking {
+  animation: pulse 1.5s infinite;
+  background-color: #27c93f;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.voice-processing-indicator {
+  color: var(--text-color-dim);
+  font-size: 14px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Browser compatibility message */
+.browser-compatibility-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: rgba(255, 159, 64, 0.2);
+  border-left: 3px solid #ff9f40;
+  margin: 0 15px 15px;
+  border-radius: 4px;
+}
+
+.browser-compatibility-message svg {
+  color: #ff9f40;
+  flex-shrink: 0;
+}
+
+.browser-compatibility-message p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* Update chatbot input container to accommodate voice button */
+.chatbot-input-container {
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
