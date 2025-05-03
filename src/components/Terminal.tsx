@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import CommandInput from "./CommandInput"
 import { useCommandHistory } from "../hooks/useCommandHistory"
 import About from "./commands/About"
@@ -367,14 +367,14 @@ export default function Terminal() {
     setCurrentCommand(value)
   }
 
-  useEffect(() => {
-    // Auto-scroll to the top of the latest output when new commands are added
-    if (latestOutputRef.current) {
-      setTimeout(() => {
-        latestOutputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-      }, 100)
-    }
-  }, [commandResults])
+  // useEffect(() => {
+  //   // Auto-scroll to the top of the latest output when new commands are added
+  //   if (latestOutputRef.current) {
+  //     setTimeout(() => {
+  //       latestOutputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+  //     }, 100)
+  //   }
+  // }, [commandResults])
 
   // Show initial help hint if no commands have been entered
   const showHelpHint = commandResults.length === 0
