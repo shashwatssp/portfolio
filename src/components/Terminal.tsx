@@ -135,11 +135,16 @@ export default function Terminal() {
       },
     ])
 
-    // Scroll to the command immediately
+    // Scroll to the command immediately with better mobile support
     setTimeout(() => {
       const commandElement = document.getElementById(`command-${commandResultId}`)
       if (commandElement) {
-        commandElement.scrollIntoView({ behavior: "smooth", block: "start" })
+        // Use smooth scrolling on desktop, but instant on mobile for better performance
+        const isMobileDevice = window.innerWidth < 768
+        commandElement.scrollIntoView({
+          behavior: isMobileDevice ? "auto" : "smooth",
+          block: "start",
+        })
       }
     }, 50)
 
@@ -320,11 +325,23 @@ export default function Terminal() {
         ),
       )
 
-      // Scroll to the command result after updating
+      // Later in the function, update the scrolling after processing:
       setTimeout(() => {
         const commandElement = document.getElementById(`command-${commandResultId}`)
         if (commandElement) {
-          commandElement.scrollIntoView({ behavior: "smooth", block: "start" })
+          const isMobileDevice = window.innerWidth < 768
+          commandElement.scrollIntoView({
+            behavior: isMobileDevice ? "auto" : "smooth",
+            block: "start",
+          })
+
+          // On mobile, add a small delay and scroll again to ensure it's visible
+          // This helps overcome some mobile browser quirks
+          if (isMobileDevice) {
+            setTimeout(() => {
+              commandElement.scrollIntoView({ behavior: "auto", block: "start" })
+            }, 100)
+          }
         }
       }, 50)
 
