@@ -1621,3 +1621,80 @@ button {
 .command-result {
   scroll-margin-top: 20px; /* Ensure command results are visible */
 }
+
+/* Fix for command input alignment on mobile */
+.command-line-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 16px; /* Consistent font size */
+}
+
+.prompt {
+  color: var(--text-color-alt);
+  margin-right: 8px;
+  white-space: nowrap;
+  user-select: none;
+  font-family: var(--font-family);
+  font-size: inherit; /* Inherit from parent */
+  line-height: 1.5; /* Match input line height */
+}
+
+.command-input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: inherit; /* Inherit from parent */
+  padding: 5px 0;
+  outline: none;
+  caret-color: var(--text-color);
+  line-height: 1.5;
+  margin: 0; /* Remove any default margins */
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 768px) {
+  .command-line-container {
+    font-size: 16px; /* Explicit font size for mobile */
+    align-items: baseline; /* Better alignment on mobile */
+  }
+
+  .prompt,
+  .command-input {
+    font-size: inherit; /* Ensure they match */
+    line-height: 1.5;
+  }
+
+  /* Improve scrolling behavior for command results */
+  .command-result {
+    scroll-margin-top: 10px; /* Smaller margin on mobile */
+    padding-bottom: 5px; /* Add space between command results */
+  }
+
+  /* Ensure the terminal content is properly scrollable */
+  .terminal-content {
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+}
+
+/* Add specific mobile styles to ensure consistency */
+@media (max-width: 768px) {
+  .command-line-container {
+    font-size: 16px; /* Explicit font size for mobile */
+  }
+
+  .prompt,
+  .command-input {
+    font-size: inherit; /* Ensure they match */
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 375px) {
+  .command-line-container {
+    font-size: 14px; /* Slightly smaller for very small screens */
+  }
+}
