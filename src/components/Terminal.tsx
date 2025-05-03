@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import CommandInput from "./CommandInput"
 import { useCommandHistory } from "../hooks/useCommandHistory"
 import About from "./commands/About"
@@ -82,6 +82,9 @@ export default function Terminal() {
   const isMobile = useMobile()
   const { theme } = useTheme()
   const { setInterfaceMode } = useInterfaceMode()
+  const [isProcessingCommand, setIsProcessingCommand] = useState(false)
+  const lastCommandIdRef = useRef<number | null>(null)
+  const scrollLockRef = useRef(false)
 
   // Function to check if a command contains any keywords
   const checkForKeywords = (command: string) => {
@@ -110,6 +113,16 @@ export default function Terminal() {
     return { found: false }
   }
 
+  // Prevent auto-scrolling when new content is added
+  useEffect(() => {
+    if (scrollLockRef.current && lastCommandIdRef.current !== null) {
+      const commandElement = document.getElementById(`command-${lastCommandIdRef.current}`)
+      if (commandElement) {
+        commandElement.scrollIntoView({ behavior: "auto", block: "start" })
+      }
+    }
+  }, [commandResults])
+
   const executeCommand = (command: string) => {
     const trimmedCommand = command.trim().toLowerCase()
 
@@ -124,6 +137,11 @@ export default function Terminal() {
 
     // Create a unique ID for this command result
     const commandResultId = Date.now()
+    lastCommandIdRef.current = commandResultId
+
+    // Set processing flag
+    setIsProcessingCommand(true)
+    scrollLockRef.current = true
 
     // Add the command to results immediately
     setCommandResults((prev) => [
@@ -139,12 +157,8 @@ export default function Terminal() {
     setTimeout(() => {
       const commandElement = document.getElementById(`command-${commandResultId}`)
       if (commandElement) {
-        // Use smooth scrolling on desktop, but instant on mobile for better performance
-        const isMobileDevice = window.innerWidth < 768
-        commandElement.scrollIntoView({
-          behavior: isMobileDevice ? "auto" : "smooth",
-          block: "start",
-        })
+        // Use instant scrolling for better performance and to prevent scroll issues
+        commandElement.scrollIntoView({ behavior: "auto", block: "start" })
       }
     }, 50)
 
@@ -171,6 +185,8 @@ export default function Terminal() {
           break
         case "clear":
           setCommandResults([])
+          setIsProcessingCommand(false)
+          scrollLockRef.current = false
           return
         case "neofetch":
           output = <Neofetch />
@@ -325,22 +341,29 @@ export default function Terminal() {
         ),
       )
 
-      // Later in the function, update the scrolling after processing:
+      // Ensure we're still at the command after updating the output
       setTimeout(() => {
         const commandElement = document.getElementById(`command-${commandResultId}`)
         if (commandElement) {
-          const isMobileDevice = window.innerWidth < 768
-          commandElement.scrollIntoView({
-            behavior: isMobileDevice ? "auto" : "smooth",
-            block: "start",
-          })
+          commandElement.scrollIntoView({ behavior: "auto", block: "start" })
 
-          // On mobile, add a small delay and scroll again to ensure it's visible
-          // This helps overcome some mobile browser quirks
-          if (isMobileDevice) {
+          // For mobile, add a small delay and scroll again to ensure it's visible
+          if (isMobile) {
             setTimeout(() => {
-              commandElement.scrollIntoView({ behavior: "auto", block: "start" })
+              if (commandElement) {
+                commandElement.scrollIntoView({ behavior: "auto", block: "start" })
+              }
+              // Reset processing flag after ensuring scroll position
+              setIsProcessingCommand(false)
+
+              // Keep scroll lock active for a bit longer on mobile
+              setTimeout(() => {
+                scrollLockRef.current = false
+              }, 500)
             }, 100)
+          } else {
+            setIsProcessingCommand(false)
+            scrollLockRef.current = false
           }
         }
       }, 50)
@@ -383,15 +406,6 @@ export default function Terminal() {
     const value = e.target.value
     setCurrentCommand(value)
   }
-
-  // useEffect(() => {
-  //   // Auto-scroll to the top of the latest output when new commands are added
-  //   if (latestOutputRef.current) {
-  //     setTimeout(() => {
-  //       latestOutputRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
-  //     }, 100)
-  //   }
-  // }, [commandResults])
 
   // Show initial help hint if no commands have been entered
   const showHelpHint = commandResults.length === 0
