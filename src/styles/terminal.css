@@ -1230,3 +1230,8 @@
     transform: translate(24px, 0);
   }
 }
+
+.command-result {
+  margin-bottom: 15px;
+  scroll-margin-top: 20px; /* This ensures there's space at the top when scrolling to a command */
+}
