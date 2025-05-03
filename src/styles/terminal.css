@@ -2,6 +2,7 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  scroll-behavior: auto !important; /* Override any smooth scrolling */
 }
 
 .command-line {
@@ -9,6 +10,10 @@
   align-items: center;
   margin-bottom: 8px;
   font-size: 14px;
+  position: relative;
+  color: var(--text-color);
+  margin-bottom: 5px;
+  padding-top: 5px; /* Add some padding at the top for better visibility */
 }
 
 .prompt {
@@ -31,6 +36,10 @@
 .command-output {
   margin-bottom: 20px;
   padding-left: 20px;
+  color: var(--text-color);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-anchor: none; /* Prevent this element from being an overflow anchor */
 }
 
 .ascii-header {
@@ -1111,6 +1120,9 @@
 
   .command-line {
     flex-wrap: wrap;
+    background-color: rgba(0, 255, 0, 0.03);
+    padding: 5px;
+    border-radius: 4px;
   }
 
   .command-input {
@@ -1120,6 +1132,9 @@
 
   .input-container {
     flex-wrap: wrap;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    align-items: baseline;
   }
 
   .mobile-enter-button {
@@ -1202,6 +1217,7 @@
   .terminal {
     -webkit-overflow-scrolling: touch;
     padding-bottom: 20px; /* Add space at the bottom */
+    overflow-anchor: none;
   }
 
   /* Ensure the command result has proper spacing */
@@ -1209,6 +1225,10 @@
     margin-bottom: 15px;
     border-bottom: 1px solid rgba(0, 255, 0, 0.1);
     padding-bottom: 10px;
+    scroll-margin-top: 10px;
+    border-top: 1px solid rgba(0, 255, 0, 0.05); /* Add subtle separator */
+    padding-top: 10px;
+    position: relative; /* Add position for better scroll anchoring */
   }
 }
 
@@ -1272,4 +1292,5 @@
 .command-result {
   margin-bottom: 15px;
   scroll-margin-top: 20px; /* This ensures there's space at the top when scrolling to a command */
+  position: relative; /* Add position for better scroll anchoring */
 }
