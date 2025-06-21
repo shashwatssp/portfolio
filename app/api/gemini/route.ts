@@ -76,11 +76,11 @@ Core Competencies: App Development, Web Development, Competitive Programming, OO
 
 ACHIEVEMENTS
 
-- Pupil on Codeforces (Max Rating: 1376): https://codeforces.com/profile/shashwatssp
+- Specialist on Codeforces (Max Rating: 1426): https://codeforces.com/profile/shashwatssp
 - 3-Star on CodeChef (Max Rating: 1690): https://www.codechef.com/users/shashwatssp
 - Global Rank 49 in CodeChef Starters 102: https://www.codechef.com/rankings/START102C?itemsPerPage=100&order=asc&page=1&search=shashwatssp&sortBy=rank
 - Global Rank 156 in CodeChef Starters 67: https://www.codechef.com/rankings/START67B?itemsPerPage=100&order=asc&page=1&search=shashwatssp&sortBy=rank
-- Solved 600+ DSA problems on LeetCode: https://leetcode.com/u/shashwatssp/
+- Solved 700+ DSA problems on LeetCode: https://leetcode.com/u/shashwatssp/
 - Solved 1600+ problems across multiple platforms; participated in 140+ contests
 - 2nd place at ByteGram (among 500+ participants)
 
