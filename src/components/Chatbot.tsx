@@ -505,7 +505,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
       </div>
       <ul className="chatbot-achievements-list">
         <li>
-          <strong>Pupil on </strong>
+          <strong>Specialist on </strong>
           <a
             href="https://codeforces.com/profile/shashwatssp"
             target="_blank"
@@ -514,7 +514,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           >
             Codeforces
           </a>{" "}
-          (Max Rating: 1376) and <strong>3-Star Rated on </strong>
+          (Max Rating: 1426) and <strong>3-Star Rated on </strong>
           <a
             href="https://www.codechef.com/users/shashwatssp"
             target="_blank"
@@ -562,7 +562,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           Secured <strong>2nd Position at ByteGram</strong> out of 500+ participants at the university level.
         </li>
         <li>
-          Solved over 600+ DSA problems on{" "}
+          Solved over 700+ DSA problems on{" "}
           <a
             href="https://leetcode.com/u/shashwatssp/"
             target="_blank"

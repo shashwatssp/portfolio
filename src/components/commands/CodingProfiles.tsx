@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion"
 import { ExternalLink, Award, Code, Star } from "lucide-react"
+import type React from "react" // Import React to declare JSX.Element
 
 interface CodingProfile {
   platform: string
   username: string
   url: string
   rating?: string
-  icon: JSX.Element
+  icon: React.JSX.Element // Declare JSX.Element from React
   description: string
 }
 
