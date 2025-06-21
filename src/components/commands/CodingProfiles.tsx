@@ -26,7 +26,7 @@ export default function CodingProfiles() {
       platform: "Codeforces",
       username: "shashwatssp",
       url: "https://codeforces.com/profile/shashwatssp",
-      rating: "Pupil (Max Rating: 1376)",
+      rating: "Specialist (Max Rating: 1426)",
       icon: <Code size={20} />,
       description: "Participated in numerous contests and solved a variety of algorithmic problems.",
     },
@@ -35,7 +35,7 @@ export default function CodingProfiles() {
       username: "shashwatssp",
       url: "https://leetcode.com/u/shashwatssp/",
       icon: <Code size={20} />,
-      description: "Solved over 600+ DSA problems, showcasing strong problem-solving and algorithmic skills.",
+      description: "Solved over 700+ DSA problems, showcasing strong problem-solving and algorithmic skills.",
     },
     {
       platform: "Codolio",
