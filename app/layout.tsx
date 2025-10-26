@@ -2,7 +2,7 @@ import type React from "react"
 export const metadata = {
   title: "shashwatssp portfolio",
   description: "Terminal-style portfolio of Shashwat Shagun Pandey",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
