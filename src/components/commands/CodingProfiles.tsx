@@ -27,7 +27,7 @@ export default function CodingProfiles() {
       platform: "Codeforces",
       username: "shashwatssp",
       url: "https://codeforces.com/profile/shashwatssp",
-      rating: "Specialist (Max Rating: 1426)",
+      rating: "Specialist (Max Rating: 1425)", // CHANGED from "Pupil (Max Rating: 1376)"
       icon: <Code size={20} />,
       description: "Participated in numerous contests and solved a variety of algorithmic problems.",
     },

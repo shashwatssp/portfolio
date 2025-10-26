@@ -403,7 +403,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
     {
       name: "Codeforces",
       achievements: [
-        "Pupil (Max Rating: 1376)",
+        "Specialist (Max Rating: 1425)", // CHANGED from "Max Rating: 1426"
         "Participated in numerous contests",
         "Solved a variety of algorithmic problems",
       ],
@@ -505,7 +505,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
       </div>
       <ul className="chatbot-achievements-list">
         <li>
-          <strong>Specialist on </strong>
+          <strong>Specialist on </strong> {/* CHANGED from "Pupil on" */}
           <a
             href="https://codeforces.com/profile/shashwatssp"
             target="_blank"
@@ -514,7 +514,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           >
             Codeforces
           </a>{" "}
-          (Max Rating: 1426) and <strong>3-Star Rated on </strong>
+          (Max Rating: 1425) and <strong>3-Star Rated on </strong> {/* CHANGED from 1376 */}
           <a
             href="https://www.codechef.com/users/shashwatssp"
             target="_blank"

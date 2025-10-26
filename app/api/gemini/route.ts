@@ -3,7 +3,7 @@ import { type NextRequest, NextResponse } from "next/server"
 // Gemini API integration for Shashwat Shagun Pandey's portfolio
 // Use GEMINI_API_KEY (not NEXT_PUBLIC_) for server-side only access
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent"
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash-lite:generateContent"
 
 // Enhanced context with resume information & rich links
 const RESUME_CONTEXT = `
