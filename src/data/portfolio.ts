@@ -55,6 +55,7 @@ export interface CodingProfile {
 export interface Achievement {
   title: string
   description: string
+  link?: string
 }
 
 export interface Education {
@@ -371,10 +372,12 @@ export const achievements: Achievement[] = [
   {
     title: "Global Rank 49",
     description: "CodeChef Starters 102",
+    link: "https://www.codechef.com/rankings/START102C?itemsPerPage=100&order=asc&page=1&search=shashwatssp&sortBy=rank",
   },
   {
     title: "Global Rank 156",
     description: "CodeChef Starters 67",
+    link: "https://www.codechef.com/rankings/START67B?itemsPerPage=100&order=asc&page=1&search=shashwatssp&sortBy=rank",
   },
   {
     title: "2nd Position at ByteGram",

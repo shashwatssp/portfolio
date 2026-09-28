@@ -101,10 +101,24 @@ export default function CodingProfiles() {
             India
           </li>
           <li>
-            <strong>Global Rank 49</strong> in CodeChef Starters 102
+            <a
+              href="https://www.codechef.com/rankings/START102C?itemsPerPage=100&order=asc&page=1&search=shashwatssp&sortBy=rank"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
+              <strong>Global Rank 49</strong> in CodeChef Starters 102 <ExternalLink size={12} />
+            </a>
           </li>
           <li>
-            <strong>Global Rank 156</strong> in CodeChef Starters 67
+            <a
+              href="https://www.codechef.com/rankings/START67B?itemsPerPage=100&order=asc&page=1&search=shashwatssp&sortBy=rank"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
+              <strong>Global Rank 156</strong> in CodeChef Starters 67 <ExternalLink size={12} />
+            </a>
           </li>
           <li>
             <strong>2nd Position</strong> at ByteGram out of 500+ participants

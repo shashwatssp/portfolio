@@ -35,7 +35,18 @@ export default function Achievements() {
                   <Award size={13} />
                 </span>
                 <div>
-                  <p className="text-sm font-medium text-foreground">{achievement.title}</p>
+                  {achievement.link ? (
+                    <a
+                      href={achievement.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded text-sm font-medium text-foreground transition-colors hover:text-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:hover:text-emerald-400"
+                    >
+                      {achievement.title} <ExternalLink size={11} />
+                    </a>
+                  ) : (
+                    <p className="text-sm font-medium text-foreground">{achievement.title}</p>
+                  )}
                   <p className="text-xs text-muted-foreground">{achievement.description}</p>
                 </div>
               </motion.li>
