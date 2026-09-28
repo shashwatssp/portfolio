@@ -5,15 +5,12 @@ import { ArrowRight, Github, Linkedin, Mail, TerminalSquare } from "lucide-react
 import { TypingEffect } from "../ui/TypingEffect"
 import { profile, projects } from "../../data/portfolio"
 import { useInterfaceMode } from "../../hooks/useInterfaceMode"
-
-function scrollToSection(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
-}
+import { scrollToSection } from "./scroll"
 
 const STATS = [
-  { value: `${projects.length}+`, label: "Projects built" },
-  { value: "1600+", label: "Problems solved" },
-  { value: "140+", label: "Contests" },
+  { value: `${projects.length}+`, label: "Projects built", href: `https://${profile.github}` },
+  { value: "1600+", label: "Problems solved", href: `https://${profile.codolio}` },
+  { value: "140+", label: "Contests", href: `https://${profile.codolio}` },
 ]
 
 export default function Hero() {
@@ -36,21 +33,13 @@ export default function Hero() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="space-y-6"
         >
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-            <span
-              aria-hidden
-              className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-sky-600 text-xl font-bold text-white shadow-lg shadow-emerald-500/20"
-            >
-              SP
+          <p className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <p className="inline-flex items-center gap-2 self-start rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground sm:self-center">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              Available for new opportunities
-            </p>
-          </div>
+            Available for new opportunities
+          </p>
 
           <div>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
@@ -121,8 +110,16 @@ export default function Hero() {
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
                 <dd>
-                  <span className="block text-2xl font-bold text-foreground">{stat.value}</span>
-                  <span className="block text-xs text-muted-foreground">{stat.label}</span>
+                  <a
+                    href={stat.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${stat.value} ${stat.label} (opens in a new tab)`}
+                    className="inline-flex min-h-[44px] flex-col justify-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <span className="text-2xl font-bold text-foreground">{stat.value}</span>
+                    <span className="text-xs text-muted-foreground">{stat.label}</span>
+                  </a>
                 </dd>
               </div>
             ))}

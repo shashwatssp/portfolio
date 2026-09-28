@@ -91,7 +91,9 @@ export default function Terminal() {
   const scrollLockRef = useRef(false)
 
   // Function to check if a command contains any keywords
-  const checkForKeywords = (command: string) => {
+  const checkForKeywords = (
+    command: string,
+  ): { found: true; keyword: string; url: string; type: string } | { found: false } => {
     const lowercaseCommand = command.toLowerCase()
 
     // Check all keyword categories

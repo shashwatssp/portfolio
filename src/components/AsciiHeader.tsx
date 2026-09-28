@@ -1,7 +1,9 @@
 export default function AsciiHeader() {
   return (
-    <pre className="ascii-header">
-      {`
+    <>
+      {/* Full ASCII art: desktop only (clips on small screens) */}
+      <pre className="ascii-header hidden md:block">
+        {`
  ███████ ██   ██  █████  ███████ ██   ██ ██     ██  █████  ████████ 
  ██      ██   ██ ██   ██ ██      ██   ██ ██     ██ ██   ██    ██    
  ███████ ███████ ███████ ███████ ███████ ██  █  ██ ███████    ██    
@@ -20,6 +22,9 @@ export default function AsciiHeader() {
  ██      ██   ██ ██  ██ ██ ██   ██ ██         ██                    
  ██      ██   ██ ██   ████ ██████  ███████    ██                    
 `}
-    </pre>
+      </pre>
+      {/* Compact styled name: mobile only */}
+      <div className="ascii-header-mobile md:hidden">SHASHWAT SHAGUN PANDEY</div>
+    </>
   )
 }

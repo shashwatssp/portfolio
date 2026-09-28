@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Menu, X, Sun, Moon, Github, Linkedin } from "lucide-react"
 import { useTheme } from "../../hooks/useTheme"
 import ModeSwitcher from "../ui/ModeSwitcher"
+import { scrollToSection, scrollToTop } from "./scroll"
 
 const LINKS = [
   { id: "about", label: "About" },
@@ -13,10 +14,6 @@ const LINKS = [
   { id: "achievements", label: "Achievements" },
   { id: "contact", label: "Contact" },
 ]
-
-function scrollToSection(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" })
-}
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
@@ -43,7 +40,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollToTop}
           aria-label="Back to top"
           className="flex items-center gap-2 rounded-md font-mono text-sm font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >

@@ -16,7 +16,7 @@ export default function Section({ id, eyebrow, title, subtitle, children, classN
   const reduceMotion = useReducedMotion()
 
   return (
-    <section id={id} className={`scroll-mt-20 py-16 sm:py-20 ${className ?? ""}`}>
+    <section id={id} className={`scroll-mt-20 pb-16 pt-8 sm:pb-20 sm:pt-10 ${className ?? ""}`}>
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}

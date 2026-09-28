@@ -75,6 +75,7 @@ export default function Projects() {
       description:
         "Multi-tenant AI SaaS platform in Go/Gin and Next.js where businesses create custom chatbots trained on their own data via voice input, PDF uploads, or website scraping — with a RAG pipeline on Qdrant, SSE streaming, appointment booking, and embeddable widgets.",
       techStack: ["Go (Gin)", "Next.js", "Qdrant", "LLM APIs", "RAG"],
+      link: "https://flowchat4u.vercel.app/",
       github: "https://github.com/shashwatssp/FlowChat",
       features: [
         "Train chatbots on voice, PDFs, or websites",
@@ -90,6 +91,7 @@ export default function Projects() {
       description:
         "End-to-end AI-powered SaaS platform where teachers create test papers via voice commands or PDF uploads, with an OCR extraction service converting PDFs into structured question banks, student-facing test-taking, AI feedback, and real-time analytics dashboards.",
       techStack: ["React", "Supabase", "LLM APIs", "PDF.js", "Tesseract.js"],
+      link: "https://mockmatev1.netlify.app/",
       github: "https://github.com/shashwatssp/MockMate",
       features: [
         "Create test papers via voice commands or PDF uploads",

@@ -1086,8 +1086,16 @@
     flex-direction: column;
   }
 
-  .ascii-header {
-    font-size: 6px;
+  /* Full ASCII art is hidden on mobile; show compact styled name instead */
+  .ascii-header-mobile {
+    display: block;
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--text-color-alt);
+    text-align: center;
+    margin-bottom: 20px;
   }
 
   .ascii-small {

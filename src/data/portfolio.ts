@@ -84,6 +84,7 @@ export const projects: Project[] = [
     longDescription:
       "Multi-tenant AI SaaS platform in Go/Gin and Next.js where businesses create custom chatbots via voice input, PDF uploads, or website scraping — with RAG on Qdrant, SSE streaming, appointment booking, and embeddable widgets.",
     techStack: ["Go (Gin)", "Next.js", "Qdrant", "LLM APIs", "RAG"],
+    link: "https://flowchat4u.vercel.app/",
     github: "https://github.com/shashwatssp/FlowChat",
     featured: true,
     features: [
@@ -101,6 +102,7 @@ export const projects: Project[] = [
     longDescription:
       "End-to-end AI-powered SaaS where teachers create test papers via voice commands or PDF uploads, with OCR extraction into question banks, student test-taking, AI feedback, and real-time analytics.",
     techStack: ["React", "Supabase", "LLM APIs", "PDF.js", "Tesseract.js"],
+    link: "https://mockmatev1.netlify.app/",
     github: "https://github.com/shashwatssp/MockMate",
     featured: true,
     features: [

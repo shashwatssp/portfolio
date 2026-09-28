@@ -273,6 +273,7 @@ const ProjectsComponent = ({ specificProject = "" }) => {
       techStack: ["Go (Gin)", "Next.js", "Qdrant", "LLM APIs", "RAG"],
       description:
         "Businesses create custom chatbots trained on their own data via voice input, PDF uploads, or website scraping — with a RAG pipeline on Qdrant, SSE streaming, calendar-based appointment booking, and embeddable chat widgets.",
+      link: "https://flowchat4u.vercel.app/",
       github: "https://github.com/shashwatssp/FlowChat",
     },
     {
@@ -282,6 +283,7 @@ const ProjectsComponent = ({ specificProject = "" }) => {
       techStack: ["React", "Supabase", "LLM APIs", "PDF.js", "Tesseract.js"],
       description:
         "Teachers create test papers via voice commands or PDF uploads, with an OCR extraction service converting PDFs into structured question banks; student-facing test-taking with AI-powered feedback and real-time analytics dashboards.",
+      link: "https://mockmatev1.netlify.app/",
       github: "https://github.com/shashwatssp/MockMate",
     },
     {
@@ -776,8 +778,10 @@ export default function Chatbot() {
   const { theme } = useTheme()
   const { setInterfaceMode } = useInterfaceMode()
 
-  // Function to check if a message contains any keywords
-  const checkForKeywords = (message: string) => {
+  // Function to check if a command contains any keywords
+  const checkForKeywords = (
+    message: string,
+  ): { found: true; keyword: string; url: string; type: string } | { found: false } => {
     const lowercaseMessage = message.toLowerCase()
 
     // Check all keyword categories
