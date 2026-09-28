@@ -39,14 +39,14 @@ export default function Neofetch() {
 
     // Skills data (0-5 scale)
     const skills = [
-      { name: "C++", value: 5 },
+      { name: "Go", value: 5 },
       { name: "React", value: 5 },
-      { name: "Flutter", value: 5 },
-      { name: "JavaScript", value: 4 },
+      { name: "TypeScript", value: 5 },
+      { name: "RAG/LLM", value: 5 },
+      { name: "Kubernetes", value: 5 },
       { name: "Node.js", value: 4 },
-      { name: "Kubernetes", value: 4 },
-      { name: "MongoDB", value: 4 },
-      { name: "SQL", value: 3 },
+      { name: "Python", value: 4 },
+      { name: "PostgreSQL", value: 4 },
     ]
 
     const numSkills = skills.length
@@ -140,15 +140,19 @@ export default function Neofetch() {
           </div>
           <div className="info-line">
             <span className="info-label">Languages:</span>
-            <span className="info-value">C++, JavaScript, TypeScript, Dart, C</span>
+            <span className="info-value">Go, TypeScript, JavaScript, Python, C++</span>
+          </div>
+          <div className="info-line">
+            <span className="info-label">AI / LLM:</span>
+            <span className="info-value">RAG, LangChain, MCP, Google ADK</span>
           </div>
           <div className="info-line">
             <span className="info-label">Frameworks:</span>
-            <span className="info-value">React, Flutter, Node.js, Express</span>
+            <span className="info-value">React, Next.js, Node.js, Express</span>
           </div>
           <div className="info-line">
             <span className="info-label">DevOps:</span>
-            <span className="info-value">Kubernetes, Docker, CI/CD</span>
+            <span className="info-value">Kubernetes, Docker, Istio, CI/CD</span>
           </div>
         </div>
       </div>

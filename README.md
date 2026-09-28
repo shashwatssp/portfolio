@@ -26,12 +26,33 @@ Welcome to my personal portfolio — a unique blend of terminal-style interface 
 
 ## 🛠 Tech Stack
 
-- **Frontend**: React, Tailwind CSS
-- **Chatbot**: AI-powered interaction
+- **Framework**: Next.js 14 (App Router), React 19, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **Chatbot**: Google Gemini API (server-side API route — your key never reaches the browser)
 - **Deployment**: Vercel
 
 ---
 
+## ⚙️ Local Setup
+
+```bash
+# 1. Install dependencies (pnpm recommended; npm works too)
+pnpm install
+
+# 2. Create your .env file (copy the template)
+cp .env.example .env
+
+# 3. Add your Gemini API key to .env — get one free at https://aistudio.google.com/apikey
+#    GEMINI_API_KEY=your_key_here
+
+# 4. Start the dev server
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) and try the chatbot mode.
+
+> **Note:** The API key is only read server-side (`GEMINI_API_KEY` in `.env`), and `.env` is git-ignored.
+> On Vercel, add `GEMINI_API_KEY` in Project Settings → Environment Variables.
 
 ---
 

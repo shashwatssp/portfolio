@@ -30,10 +30,11 @@ export default function About() {
           <div className="role-title">Associate Software Engineer at Lowe's</div>
           <div className="role-period">Jul 2024 - Present</div>
           <ul className="role-responsibilities">
-            <li>Learning React, Golang, and Kubernetes while working on a CI/CD tool</li>
+            <li>Engineer on an enterprise CI/CD platform used by 5,000+ engineers (React, Node.js, Go, Kubernetes)</li>
+            <li>Built an AI agent and MCP Server on Google ADK for natural-language debugging of production incidents</li>
             <li>
-              Adding new features that enhance user experience, making the tool more intuitive and effective for
-              developers
+              Shipped SSE streaming, Istio RBAC self-service, and canary deployments — cutting production incidents by
+              35%
             </li>
           </ul>
         </div>

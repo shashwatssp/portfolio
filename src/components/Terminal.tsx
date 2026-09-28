@@ -29,6 +29,10 @@ type CommandResult = {
 // Define keywords for intelligent link detection
 const KEYWORDS = {
   projects: {
+    invoxa: "https://github.com/shashwatssp/Invoxa",
+    transformertrek: "https://github.com/shashwatssp/TransformerTrek",
+    flowchat: "https://github.com/shashwatssp/FlowChat",
+    mockmate: "https://github.com/shashwatssp/MockMate",
     fast7: "https://github.com/shashwatssp/fast7",
     shhhdrop: "https://github.com/shashwatssp/shhhdrop",
     "amazon clone": "https://github.com/shashwatssp/amazon_clone",
@@ -98,6 +102,7 @@ export default function Terminal() {
       for (const keyword in categoryKeywords) {
         if (lowercaseCommand.includes(keyword.toLowerCase())) {
           const url = categoryKeywords[keyword as keyof typeof categoryKeywords]
+          if (url === undefined) continue
           const type = category === "projects" ? "Project" : category === "platforms" ? "Platform" : "Company"
 
           return {

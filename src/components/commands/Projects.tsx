@@ -23,6 +23,68 @@ export default function Projects() {
 
   const projects: Project[] = [
     {
+      name: "invoxa",
+      title: "Invoxa (AI-Powered Invoice & AP Automation)",
+      description:
+        "AI-powered invoice and accounts-payable automation for Indian micro-businesses: extraction with confidence scores, GSTIN validation, duplicate detection, human-in-the-loop review queue, plain-English Q&A over your books, and exports to CSV, Excel, and Tally XML.",
+      techStack: ["Python", "FastAPI", "React", "Supabase", "Docker", "OCR"],
+      link: "https://invoxa4u.vercel.app/",
+      github: "https://github.com/shashwatssp/Invoxa",
+      features: [
+        "Invoice extraction with per-field confidence scores",
+        "GSTIN checksum + duplicate + arithmetic validation",
+        "Human review queue for flagged invoices",
+        "Ask Invoxa: read-only AI answers about your books",
+        "Export Center: CSV, XLSX, Tally XML, PDF",
+      ],
+    },
+    {
+      name: "transformertrek",
+      title: "TransformerTrek (Interactive AI/LLM Learning Platform)",
+      description:
+        "Interactive, visual explanations of transformers, LLMs, retrieval systems (RAG), and agents (MCP, A2A) — 33 modules across 7 sections where every widget computes for real in the browser, with knowledge-check quizzes and flashcard-based review.",
+      techStack: ["React 19", "TypeScript"],
+      link: "https://transformertrek.vercel.app/",
+      github: "https://github.com/shashwatssp/TransformerTrek",
+      features: [
+        "33 modules across 7 ordered sections",
+        "Live computing widgets (attention, BM25, perplexity)",
+        "Knowledge-check quizzes per module",
+        "Rapid review flashcards",
+        "Private by default: no accounts, no tracking",
+      ],
+    },
+    {
+      name: "flowchat",
+      title: "FlowChat (Multi-Tenant AI SaaS Chatbot Platform)",
+      description:
+        "Multi-tenant AI SaaS platform in Go/Gin and Next.js where businesses create custom chatbots trained on their own data via voice input, PDF uploads, or website scraping — with a RAG pipeline on Qdrant, SSE streaming, appointment booking, and embeddable widgets.",
+      techStack: ["Go (Gin)", "Next.js", "Qdrant", "LLM APIs", "RAG"],
+      github: "https://github.com/shashwatssp/FlowChat",
+      features: [
+        "Train chatbots on voice, PDFs, or websites",
+        "RAG pipeline on Qdrant for grounded Q&A",
+        "Model-agnostic LLM integration",
+        "SSE streaming for real-time responses",
+        "Embeddable chat widgets + appointment booking",
+      ],
+    },
+    {
+      name: "mockmate",
+      title: "MockMate (AI-Powered Test Creation & Assessment)",
+      description:
+        "End-to-end AI-powered SaaS platform where teachers create test papers via voice commands or PDF uploads, with an OCR extraction service converting PDFs into structured question banks, student-facing test-taking, AI feedback, and real-time analytics dashboards.",
+      techStack: ["React", "Supabase", "LLM APIs", "PDF.js", "Tesseract.js"],
+      github: "https://github.com/shashwatssp/MockMate",
+      features: [
+        "Create test papers via voice commands or PDF uploads",
+        "OCR extraction into structured question banks",
+        "Student-facing test-taking workflows",
+        "AI-powered performance feedback",
+        "Real-time analytics dashboards for teachers",
+      ],
+    },
+    {
       name: "fast7",
       title: "Fast7 (SaaS Restaurant Website Builder)",
       description:
@@ -78,8 +140,8 @@ export default function Projects() {
         "Developed an interactive chess game with an AI opponent and integrated a leaderboard to track top players.",
       techStack: ["React", "Vite", "Firebase"],
       link: "https://chessvsdeepseek.netlify.app/",
-      github: "https://github.com/shashwatssp/chessAI",
-            youtubeLink: "https://youtu.be/SBCcJfU28OY",
+      github: "https://github.com/shashwatssp/ChessVsDeepSeek",
+      youtubeLink: "https://youtu.be/SBCcJfU28OY",
       features: [
         "AI opponent with multiple difficulty levels",
         "Real-time leaderboard",

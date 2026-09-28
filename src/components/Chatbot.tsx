@@ -31,6 +31,10 @@ type Message = {
 // Define keywords for intelligent link detection (same as Terminal)
 const KEYWORDS = {
   projects: {
+    invoxa: "https://github.com/shashwatssp/Invoxa",
+    transformertrek: "https://github.com/shashwatssp/TransformerTrek",
+    flowchat: "https://github.com/shashwatssp/FlowChat",
+    mockmate: "https://github.com/shashwatssp/MockMate",
     fast7: "https://github.com/shashwatssp/fast7",
     shhhdrop: "https://github.com/shashwatssp/shhhdrop",
     "amazon clone": "https://github.com/shashwatssp/amazon_clone",
@@ -56,29 +60,37 @@ const KEYWORDS = {
 
 // Skill component for chatbot
 const SkillsComponent = () => {
-  const skills: Record<string, { name: string; icon: React.JSX.Element; level: number }[]> = {
+  const skills: Record<string, { name: string; icon: JSX.Element; level: number }[]> = {
     Languages: [
-      { name: "C++", icon: <Code size={16} />, level: 5 },
-      { name: "JavaScript", icon: <Code size={16} />, level: 4 },
-      { name: "TypeScript", icon: <Code size={16} />, level: 4 },
-      { name: "Dart", icon: <Code size={16} />, level: 4 },
-      { name: "C", icon: <Code size={16} />, level: 3 },
+      { name: "Go", icon: <Server size={16} />, level: 5 },
+      { name: "TypeScript", icon: <Code size={16} />, level: 5 },
+      { name: "JavaScript", icon: <Code size={16} />, level: 5 },
+      { name: "Python", icon: <Code size={16} />, level: 4 },
+      { name: "C++", icon: <Code size={16} />, level: 4 },
     ],
-    Frameworks: [
-      { name: "Flutter ⚡", icon: <Zap size={16} />, level: 5 },
+    "AI / LLM": [
+      { name: "RAG & Vector Search", icon: <Database size={16} />, level: 5 },
+      { name: "LangChain", icon: <Zap size={16} />, level: 4 },
+      { name: "MCP & Google ADK", icon: <Cpu size={16} />, level: 4 },
+      { name: "LLM APIs", icon: <Globe size={16} />, level: 5 },
+    ],
+    "Frontend & Backend": [
       { name: "React ⭐", icon: <Globe size={16} />, level: 5 },
+      { name: "Next.js", icon: <Globe size={16} />, level: 4 },
       { name: "Node.js", icon: <Server size={16} />, level: 4 },
-      { name: "Express.js", icon: <Server size={16} />, level: 3 },
-      { name: "Firebase", icon: <Database size={16} />, level: 4 },
+      { name: "Go (Gin, Fiber)", icon: <Server size={16} />, level: 5 },
     ],
-    DevOps: [
-      { name: "Kubernetes ☸️", icon: <Cpu size={16} />, level: 4 },
-      { name: "Docker", icon: <Cpu size={16} />, level: 3 },
-      { name: "CI/CD", icon: <Cpu size={16} />, level: 4 },
+    "DevOps & Cloud": [
+      { name: "Kubernetes ☸️", icon: <Cpu size={16} />, level: 5 },
+      { name: "Docker", icon: <Cpu size={16} />, level: 4 },
+      { name: "Istio & Argo CD", icon: <Cpu size={16} />, level: 4 },
+      { name: "CI/CD", icon: <Zap size={16} />, level: 5 },
     ],
-    Database: [
+    Databases: [
+      { name: "PostgreSQL", icon: <Database size={16} />, level: 4 },
+      { name: "Redis", icon: <Database size={16} />, level: 4 },
       { name: "MongoDB", icon: <Database size={16} />, level: 4 },
-      { name: "SQL", icon: <Database size={16} />, level: 3 },
+      { name: "Qdrant", icon: <Database size={16} />, level: 4 },
     ],
   }
 
@@ -119,40 +131,35 @@ const SkillsComponent = () => {
 
 // Experience component for chatbot
 const ExperienceComponent = ({ specificCompany = "" }) => {
-  const experiences = [
+  const experiences: { company: string; role: string; period: string; achievements: string[]; link?: string }[] = [
     {
-      company: "Lowe's",
+      company: "Lowe's India",
       role: "Associate Software Engineer",
       period: "Jul 2024 - Present",
       achievements: [
-        "Gaining in-depth expertise in React, Golang, and Kubernetes, while contributing to the development of internal CI, CD, and Pipelines tools.",
-        "Added new features that enhanced user experience, making the tool more intuitive and effective for developers.",
+        "Engineer on an enterprise CI/CD platform used by 5,000+ engineers, working across React, Node.js, Go, and Kubernetes as it scaled from 1,000 to 8,000+ projects.",
+        "Built an AI agent and MCP Server on Google ADK that lets engineers debug production incidents in natural language against live deployment files and logs.",
+        "Implemented Server-Sent Events (SSE) across the full stack, replacing polling for real-time deployment status across 1000+ weekly deployments.",
+        "Built full-stack Istio RBAC management (20% fewer authorization errors) and a service mesh with canary deployments, cutting production incidents by 35%.",
+        "Awarded Raise the Roof Award (Dec 2025) and Q2 Department Award (2026) for engineering impact.",
       ],
     },
     {
       company: "MFine",
-      role: "SDE Intern",
+      role: "Software Development Engineer Intern",
       period: "Mar 2024 - Jul 2024",
       achievements: [
-        "Contributed to the backend of a B2B healthcare product using Node.js, MongoDB, and LoopBack 3.",
-        "Integrated Claim Service and TPA systems for policy year-based claim handling, improving operational efficiency.",
-        "Enhanced search functionality in Console Shylock, increasing user efficiency by 25%.",
+        "Contributed to backend services and RESTful APIs for a B2B healthcare platform with 5M+ app downloads, serving 500+ corporates and handling 50K+ daily transactions.",
+        "Worked on query optimization with indexing and a Redis caching layer, helping cut API response time from 800ms to 150ms.",
       ],
-    },
-    {
-      company: "Scaler",
-      role: "Technical Content Writer Intern (Flutter/Dart/DSA)",
-      period: "Feb 2023 - Mar 2024",
-      achievements: ["Wrote and published articles about various technical aspects of App Development and DSA."],
-      link: "https://github.com/shashwatssp/Scaler-Technical-Content-Writing/tree/main",
     },
     {
       company: "Cillyfox",
       role: "Software Engineering Intern",
       period: "Jun 2023 - Dec 2023",
       achievements: [
-        "Enhanced the MJK Sample Transport App, used by 310 hospitals and 76 labs across 8 states, improving delivery efficiency and reducing transportation time by 15-20% using Flutter and Laravel.",
-        "Led interface redesign, reducing loading time by 35-40%, and implemented resilient data-saving and optimized API synchronizations for uninterrupted operations.",
+        "Contributed to a full-stack healthcare logistics platform serving 310 hospitals and 76 labs across 8 states, supporting 15K+ daily sample transports with real-time GPS tracking.",
+        "Worked on API synchronization with exponential backoff and an offline queue on SQLite, and helped optimize delivery routing using Dijkstra's algorithm.",
       ],
     },
   ]
@@ -239,6 +246,44 @@ const ExperienceComponent = ({ specificCompany = "" }) => {
 // Projects component for chatbot
 const ProjectsComponent = ({ specificProject = "" }) => {
   const projects = [
+    {
+      name: "Invoxa",
+      title: "Invoxa (AI-Powered Invoice & AP Automation)",
+      period: "Aug 2026",
+      techStack: ["Python", "FastAPI", "React", "Supabase", "Docker", "OCR"],
+      description:
+        "AI-powered invoice and accounts-payable automation for Indian micro-businesses: extracts invoice fields with confidence scores, validates GSTIN checksums and duplicates, auto-books clean invoices or routes them to a human review queue, and answers questions about your books in plain English.",
+      link: "https://invoxa4u.vercel.app/",
+      github: "https://github.com/shashwatssp/Invoxa",
+    },
+    {
+      name: "TransformerTrek",
+      title: "TransformerTrek (Interactive AI/LLM Learning Platform)",
+      period: "Sep 2026",
+      techStack: ["React 19", "TypeScript"],
+      description:
+        "Interactive, visual explanations of transformers, LLMs, retrieval (RAG), and agents (MCP, A2A) — 33 modules across 7 sections where every widget computes for real in the browser, with knowledge-check quizzes and flashcard-based review.",
+      link: "https://transformertrek.vercel.app/",
+      github: "https://github.com/shashwatssp/TransformerTrek",
+    },
+    {
+      name: "FlowChat",
+      title: "FlowChat (Multi-Tenant AI SaaS Chatbot Platform)",
+      period: "Jul 2026 - Aug 2026",
+      techStack: ["Go (Gin)", "Next.js", "Qdrant", "LLM APIs", "RAG"],
+      description:
+        "Businesses create custom chatbots trained on their own data via voice input, PDF uploads, or website scraping — with a RAG pipeline on Qdrant, SSE streaming, calendar-based appointment booking, and embeddable chat widgets.",
+      github: "https://github.com/shashwatssp/FlowChat",
+    },
+    {
+      name: "MockMate",
+      title: "MockMate (AI-Powered Test Creation & Assessment)",
+      period: "Aug 2025 - Aug 2026",
+      techStack: ["React", "Supabase", "LLM APIs", "PDF.js", "Tesseract.js"],
+      description:
+        "Teachers create test papers via voice commands or PDF uploads, with an OCR extraction service converting PDFs into structured question banks; student-facing test-taking with AI-powered feedback and real-time analytics dashboards.",
+      github: "https://github.com/shashwatssp/MockMate",
+    },
     {
       name: "Fast7",
       title: "Fast7 (SaaS Restaurant Website Builder)",
@@ -411,7 +456,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
     },
     {
       name: "LeetCode",
-      achievements: ["Solved over 600+ DSA problems", "Showcasing strong problem-solving and algorithmic skills"],
+      achievements: ["Rated 1700+ with 850+ DSA problems solved", "Showcasing strong problem-solving and algorithmic skills"],
       link: "https://leetcode.com/u/shashwatssp/",
     },
     {
@@ -505,7 +550,11 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
       </div>
       <ul className="chatbot-achievements-list">
         <li>
-          <strong>Specialist on </strong> {/* CHANGED from "Pupil on" */}
+          Awarded <strong>Raise the Roof Award</strong> (Dec 2025) and <strong>Q2 Department Award</strong> (2026) at
+          Lowe's India for platform reliability and engineering impact.
+        </li>
+        <li>
+          <strong>Specialist on </strong>
           <a
             href="https://codeforces.com/profile/shashwatssp"
             target="_blank"
@@ -514,7 +563,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           >
             Codeforces
           </a>{" "}
-          (Max Rating: 1425) and <strong>3-Star Rated on </strong> {/* CHANGED from 1376 */}
+          (Max Rating: 1425) and <strong>3-Star Rated on </strong>
           <a
             href="https://www.codechef.com/users/shashwatssp"
             target="_blank"
@@ -562,7 +611,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           Secured <strong>2nd Position at ByteGram</strong> out of 500+ participants at the university level.
         </li>
         <li>
-          Solved over 700+ DSA problems on{" "}
+          Rated 1700+ with 850+ DSA problems solved on{" "}
           <a
             href="https://leetcode.com/u/shashwatssp/"
             target="_blank"
@@ -652,15 +701,19 @@ const NeofetchComponent = () => {
           </div>
           <div className="info-line">
             <span className="info-label">Languages:</span>
-            <span className="info-value">C++, JavaScript, TypeScript, Dart, C</span>
+            <span className="info-value">Go, TypeScript, JavaScript, Python, C++</span>
+          </div>
+          <div className="info-line">
+            <span className="info-label">AI / LLM:</span>
+            <span className="info-value">RAG, LangChain, MCP, Google ADK</span>
           </div>
           <div className="info-line">
             <span className="info-label">Frameworks:</span>
-            <span className="info-value">React, Flutter, Node.js, Express</span>
+            <span className="info-value">React, Next.js, Node.js, Express</span>
           </div>
           <div className="info-line">
             <span className="info-label">DevOps:</span>
-            <span className="info-value">Kubernetes, Docker, CI/CD</span>
+            <span className="info-value">Kubernetes, Docker, Istio, CI/CD</span>
           </div>
         </div>
       </div>
@@ -735,6 +788,7 @@ export default function Chatbot() {
       for (const keyword in categoryKeywords) {
         if (lowercaseMessage.includes(keyword.toLowerCase())) {
           const url = categoryKeywords[keyword as keyof typeof categoryKeywords]
+          if (url === undefined) continue
           const type = category === "projects" ? "Project" : category === "platforms" ? "Platform" : "Company"
 
           return {
@@ -755,7 +809,18 @@ export default function Chatbot() {
     const lowercaseMessage = message.toLowerCase()
 
     // Check for specific projects
-    const projectKeywords = ["fast7", "shhhdrop", "amazon clone", "chessvsdeepseek", "intelli-traffic", "memeverse"]
+    const projectKeywords = [
+      "invoxa",
+      "transformertrek",
+      "flowchat",
+      "mockmate",
+      "fast7",
+      "shhhdrop",
+      "amazon clone",
+      "chessvsdeepseek",
+      "intelli-traffic",
+      "memeverse",
+    ]
     for (const project of projectKeywords) {
       if (lowercaseMessage.includes(project)) {
         return { type: "projects", item: project }

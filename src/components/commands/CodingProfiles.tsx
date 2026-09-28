@@ -35,8 +35,9 @@ export default function CodingProfiles() {
       platform: "LeetCode",
       username: "shashwatssp",
       url: "https://leetcode.com/u/shashwatssp/",
+      rating: "1700+ (850+ problems solved)",
       icon: <Code size={20} />,
-      description: "Solved over 700+ DSA problems, showcasing strong problem-solving and algorithmic skills.",
+      description: "Rated 1700+ with 850+ DSA problems solved, showcasing strong problem-solving and algorithmic skills.",
     },
     {
       platform: "Codolio",
@@ -95,6 +96,10 @@ export default function CodingProfiles() {
       <div className="achievements-highlight">
         <h3>Key Achievements</h3>
         <ul className="achievements-list">
+          <li>
+            <strong>Raise the Roof Award</strong> (Dec 2025) and <strong>Q2 Department Award</strong> (2026) at Lowe's
+            India
+          </li>
           <li>
             <strong>Global Rank 49</strong> in CodeChef Starters 102
           </li>

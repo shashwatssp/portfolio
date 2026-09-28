@@ -12,27 +12,35 @@ interface Skill {
 export default function Skills() {
   const skills: Record<string, Skill[]> = {
     Languages: [
-      { name: "C++", icon: <Code size={16} />, level: 5 },
-      { name: "JavaScript", icon: <Code size={16} />, level: 4 },
-      { name: "TypeScript", icon: <Code size={16} />, level: 4 },
-      { name: "Dart", icon: <Code size={16} />, level: 4 },
-      { name: "C", icon: <Code size={16} />, level: 3 },
+      { name: "Go", icon: <Server size={16} />, level: 5 },
+      { name: "TypeScript", icon: <Code size={16} />, level: 5 },
+      { name: "JavaScript", icon: <Code size={16} />, level: 5 },
+      { name: "Python", icon: <Code size={16} />, level: 4 },
+      { name: "C++", icon: <Code size={16} />, level: 4 },
     ],
-    Frameworks: [
-      { name: "Flutter ⚡", icon: <Zap size={16} />, level: 5 },
+    "AI / LLM": [
+      { name: "RAG & Vector Search", icon: <Database size={16} />, level: 5 },
+      { name: "LangChain", icon: <Zap size={16} />, level: 4 },
+      { name: "MCP & Google ADK", icon: <Cpu size={16} />, level: 4 },
+      { name: "LLM APIs", icon: <Globe size={16} />, level: 5 },
+    ],
+    "Frontend & Backend": [
       { name: "React ⭐", icon: <Globe size={16} />, level: 5 },
+      { name: "Next.js", icon: <Globe size={16} />, level: 4 },
       { name: "Node.js", icon: <Server size={16} />, level: 4 },
-      { name: "Express.js", icon: <Server size={16} />, level: 3 },
-      { name: "Firebase", icon: <Database size={16} />, level: 4 },
+      { name: "Go (Gin, Fiber)", icon: <Server size={16} />, level: 5 },
     ],
-    DevOps: [
-      { name: "Kubernetes ☸️", icon: <Cpu size={16} />, level: 4 },
-      { name: "Docker", icon: <Cpu size={16} />, level: 3 },
-      { name: "CI/CD", icon: <Cpu size={16} />, level: 4 },
+    "DevOps & Cloud": [
+      { name: "Kubernetes ☸️", icon: <Cpu size={16} />, level: 5 },
+      { name: "Docker", icon: <Cpu size={16} />, level: 4 },
+      { name: "Istio & Argo CD", icon: <Cpu size={16} />, level: 4 },
+      { name: "CI/CD", icon: <Zap size={16} />, level: 5 },
     ],
-    Database: [
+    Databases: [
+      { name: "PostgreSQL", icon: <Database size={16} />, level: 4 },
+      { name: "Redis", icon: <Database size={16} />, level: 4 },
       { name: "MongoDB", icon: <Database size={16} />, level: 4 },
-      { name: "SQL", icon: <Database size={16} />, level: 3 },
+      { name: "Qdrant", icon: <Database size={16} />, level: 4 },
     ],
   }
 

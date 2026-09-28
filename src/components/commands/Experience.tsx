@@ -15,40 +15,36 @@ interface ExperienceItem {
 export default function Experience() {
   const experiences: ExperienceItem[] = [
     {
-      company: "Lowe's",
+      company: "Lowe's India",
       role: "Associate Software Engineer",
       period: "Jul 2024 - Present",
       achievements: [
-        "Learning React, Golang, and Kubernetes while working on a CI/CD tool.",
-        "Adding new features that enhance user experience, making the tool more intuitive and effective for developers.",
+        "Engineer on an enterprise CI/CD platform used by 5,000+ engineers, working across React, Node.js, Go, and Kubernetes as it scaled from 1,000 to 8,000+ projects.",
+        "Built an AI agent and MCP Server on Google ADK that lets engineers debug production incidents in natural language against live deployment value files and logs.",
+        "Implemented Server-Sent Events (SSE) across the full stack, replacing polling for real-time deployment status across 1000+ weekly deployments.",
+        "Built full-stack Istio RBAC management and a service mesh with canary deployments, cutting production incidents by 35%.",
       ],
+      metrics: "Raise the Roof Award (Dec 2025) · Q2 Department Award (2026)",
     },
     {
       company: "MFine",
-      role: "SDE Intern",
+      role: "Software Development Engineer Intern",
       period: "Mar 2024 - Jul 2024",
       achievements: [
-        "Contributed to the backend of a B2B healthcare product using Node.js, MongoDB, and LoopBack 3.",
-        "Integrated Claim Service and TPA systems for policy year-based claim handling, improving operational efficiency.",
+        "Contributed to backend services and RESTful APIs for a B2B healthcare platform with 5M+ app downloads, serving 500+ corporates and handling 50K+ daily transactions.",
+        "Worked on query optimization with indexing and a Redis caching layer.",
       ],
-      metrics: "25% increase in user efficiency through enhanced search functionality",
-    },
-    {
-      company: "Scaler",
-      role: "Technical Content Writer Intern (Flutter/Dart/DSA)",
-      period: "Feb 2023 - Mar 2024",
-      achievements: ["Wrote and published articles about various technical aspects of App Development and DSA."],
-      link: "https://github.com/shashwatssp/Scaler-Technical-Content-Writing/tree/main",
+      metrics: "API response time cut from 800ms to 150ms",
     },
     {
       company: "Cillyfox",
       role: "Software Engineering Intern",
       period: "Jun 2023 - Dec 2023",
       achievements: [
-        "Enhanced the MJK Sample Transport App, used by 310 hospitals and 76 labs across 8 states, improving delivery efficiency.",
-        "Led interface redesign, and implemented resilient data-saving and optimized API synchronizations for uninterrupted operations.",
+        "Contributed to a full-stack healthcare logistics platform serving 310 hospitals and 76 labs across 8 states, supporting 15K+ daily sample transports with real-time GPS tracking.",
+        "Worked on API synchronization with exponential backoff and an offline queue on SQLite for low-connectivity environments.",
       ],
-      metrics: "35-40% reduction in loading time, 15-20% improvement in transportation time",
+      metrics: "Optimized delivery routing using graph algorithms (Dijkstra's)",
     },
   ]
 
