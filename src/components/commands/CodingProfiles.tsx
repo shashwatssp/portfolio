@@ -58,7 +58,7 @@ export default function CodingProfiles() {
       <h2 className="command-title">Coding Profiles</h2>
 
       <p className="profiles-intro">
-        I've solved <strong>1600+ problems</strong> and participated in <strong>140+ contests</strong> across multiple
+        I've solved <strong>1800+ questions</strong> and participated in <strong>150+ contests</strong> across multiple
         coding platforms. Here are my profiles:
       </p>
 
@@ -110,7 +110,7 @@ export default function CodingProfiles() {
             <strong>2nd Position</strong> at ByteGram out of 500+ participants
           </li>
           <li>
-            Solved <strong>1600+ problems</strong> across multiple platforms
+            Solved <strong>1800+ questions</strong> across multiple platforms
           </li>
         </ul>
       </div>

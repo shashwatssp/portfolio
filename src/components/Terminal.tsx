@@ -235,7 +235,7 @@ export default function Terminal() {
           output = (
             <div className="greeting-response">
               <p>I'm Shashwat Shagun Pandey, a Computer Science graduate from MMMUT and currently working at Lowe's.</p>
-              <p>I specialize in React, Flutter, and have solved 1600+ DSA problems across various platforms.</p>
+              <p>I specialize in React, Flutter, and have solved 1800+ DSA questions across various platforms.</p>
               <p>
                 Type <span className="command-suggestion">about</span> or{" "}
                 <span className="command-suggestion">experience</span> to learn more about my background.

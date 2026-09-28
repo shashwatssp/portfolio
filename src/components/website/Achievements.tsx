@@ -13,7 +13,7 @@ export default function Achievements() {
       id="achievements"
       eyebrow="Achievements"
       title="Awards & competitive programming"
-      subtitle="Recognition at work and results from 140+ contests across coding platforms."
+      subtitle="Recognition at work and results from 150+ contests across coding platforms."
     >
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Awards & results */}
@@ -70,7 +70,7 @@ export default function Achievements() {
             ))}
           </ul>
           <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-            1600+ problems solved · 140+ contests · Global Rank 49 (CodeChef Starters 102)
+            1800+ questions solved · 150+ contests · Global Rank 49 (CodeChef Starters 102)
           </p>
         </div>
       </div>

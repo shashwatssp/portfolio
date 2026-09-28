@@ -129,9 +129,9 @@ export default function Neofetch() {
             <span className="info-value">B.Tech in Computer Science (MMMUT)</span>
           </div>
           <div className="info-line">
-            <span className="info-label">DSA Problems:</span>
+            <span className="info-label">DSA Questions:</span>
             <span className="info-value">
-              <AchievementCounter end={1600} suffix="+" />
+              <AchievementCounter end={1800} suffix="+" />
             </span>
           </div>
           <div className="info-line">
@@ -167,13 +167,13 @@ export default function Neofetch() {
         <div className="achievements-grid">
           <div className="achievement-item">
             <div className="achievement-value">
-              <AchievementCounter end={1600} suffix="+" />
+              <AchievementCounter end={1800} suffix="+" />
             </div>
-            <div className="achievement-label">DSA Problems Solved</div>
+            <div className="achievement-label">DSA Questions Solved</div>
           </div>
           <div className="achievement-item">
             <div className="achievement-value">
-              <AchievementCounter end={140} suffix="+" />
+              <AchievementCounter end={150} suffix="+" />
             </div>
             <div className="achievement-label">Coding Contests</div>
           </div>

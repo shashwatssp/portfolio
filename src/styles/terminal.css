@@ -1086,16 +1086,12 @@
     flex-direction: column;
   }
 
-  /* Full ASCII art is hidden on mobile; show compact styled name instead */
-  .ascii-header-mobile {
-    display: block;
-    font-family: var(--font-family);
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: var(--text-color-alt);
-    text-align: center;
-    margin-bottom: 20px;
+  /* ASCII art: keep the retro block letters, scaled to fit small screens.
+     Left-align so the centered-overflow clipping bug can't hide the left edge. */
+  .ascii-header {
+    font-size: clamp(4.5px, 2.3vw, 7px);
+    text-align: left;
+    line-height: 1.15;
   }
 
   .ascii-small {

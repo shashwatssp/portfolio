@@ -484,13 +484,13 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           <div className="achievements-grid">
             <div className="achievement-item">
               <div className="achievement-value">
-                <AchievementCounter end={1600} suffix="+" />
+                <AchievementCounter end={1800} suffix="+" />
               </div>
-              <div className="achievement-label">DSA Problems Solved</div>
+              <div className="achievement-label">DSA Questions Solved</div>
             </div>
             <div className="achievement-item">
               <div className="achievement-value">
-                <AchievementCounter end={140} suffix="+" />
+                <AchievementCounter end={150} suffix="+" />
               </div>
               <div className="achievement-label">Coding Contests</div>
             </div>
@@ -532,13 +532,13 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
         <div className="achievements-grid">
           <div className="achievement-item">
             <div className="achievement-value">
-              <AchievementCounter end={1600} suffix="+" />
+              <AchievementCounter end={1800} suffix="+" />
             </div>
-            <div className="achievement-label">DSA Problems Solved</div>
+            <div className="achievement-label">DSA Questions Solved</div>
           </div>
           <div className="achievement-item">
             <div className="achievement-value">
-              <AchievementCounter end={140} suffix="+" />
+              <AchievementCounter end={150} suffix="+" />
             </div>
             <div className="achievement-label">Coding Contests</div>
           </div>
@@ -577,7 +577,7 @@ const AchievementsComponent = ({ specificPlatform = "" }) => {
           (Max Rating: 1690).
         </li>
         <li>
-          Solved <strong>1600+ problems</strong> and participated in <strong>140+ contests</strong> across multiple{" "}
+          Solved <strong>1800+ questions</strong> and participated in <strong>150+ contests</strong> across multiple{" "}
           <a
             href="https://codolio.com/profile/shashwatssp"
             target="_blank"
@@ -692,9 +692,9 @@ const NeofetchComponent = () => {
             <span className="info-value">B.Tech in Computer Science (MMMUT)</span>
           </div>
           <div className="info-line">
-            <span className="info-label">DSA Problems:</span>
+            <span className="info-label">DSA Questions:</span>
             <span className="info-value">
-              <AchievementCounter end={1600} suffix="+" />
+              <AchievementCounter end={1800} suffix="+" />
             </span>
           </div>
           <div className="info-line">

@@ -9,8 +9,8 @@ import { scrollToSection } from "./scroll"
 
 const STATS = [
   { value: `${projects.length}+`, label: "Projects built", href: `https://${profile.github}` },
-  { value: "1600+", label: "Problems solved", href: `https://${profile.codolio}` },
-  { value: "140+", label: "Contests", href: `https://${profile.codolio}` },
+  { value: "1800+", label: "Questions solved", href: `https://${profile.codolio}` },
+  { value: "150+", label: "Contests", href: `https://${profile.codolio}` },
 ]
 
 export default function Hero() {

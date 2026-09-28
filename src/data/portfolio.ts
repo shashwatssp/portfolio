@@ -381,11 +381,11 @@ export const achievements: Achievement[] = [
     description: "Out of 500+ participants",
   },
   {
-    title: "1600+ Problems Solved",
+    title: "1800+ Questions Solved",
     description: "Across multiple coding platforms",
   },
   {
-    title: "140+ Contests Participated",
+    title: "150+ Contests Participated",
     description: "Demonstrating consistent competitive programming performance",
   },
 ]
