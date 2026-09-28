@@ -18,13 +18,18 @@ const MatrixRain: React.FC<MatrixRainProps> = ({ className = "" }) => {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas dimensions to match parent
+    // Set canvas dimensions to match parent. Assigning width/height clears the
+    // canvas, so skip when unchanged to avoid visible flashes.
+    let lastWidth = 0
+    let lastHeight = 0
     const resizeCanvas = () => {
       const parent = canvas.parentElement
-      if (parent) {
-        canvas.width = parent.clientWidth
-        canvas.height = parent.clientHeight
-      }
+      if (!parent) return
+      if (parent.clientWidth === lastWidth && parent.clientHeight === lastHeight) return
+      lastWidth = parent.clientWidth
+      lastHeight = parent.clientHeight
+      canvas.width = lastWidth
+      canvas.height = lastHeight
     }
 
     resizeCanvas()
@@ -41,42 +46,47 @@ const MatrixRain: React.FC<MatrixRainProps> = ({ className = "" }) => {
       drops[i] = Math.floor(Math.random() * -canvas.height)
     }
 
+    // Precomputed strings — per-frame allocations cause GC pauses (flicker)
+    const fadeStyle = "rgba(0, 0, 0, 0.05)"
+    const dropStyle = "#00ff00" // Matrix green
+    const font = `${fontSize}px monospace`
+
     // Draw the matrix rain
     const draw = () => {
-      // Semi-transparent black to create fade effect
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
+      ctx.fillStyle = fadeStyle
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Set text color and font
-      ctx.fillStyle = "#00ff00" // Matrix green
-      ctx.font = `${fontSize}px monospace`
+      ctx.fillStyle = dropStyle
+      ctx.font = font
 
-      // Draw each character
       for (let i = 0; i < drops.length; i++) {
-        // Random character
         const char = chars[Math.floor(Math.random() * chars.length)]
-
-        // Draw the character
         ctx.fillText(char, i * fontSize, drops[i] * fontSize)
-
-        // Move the drop down
         drops[i]++
 
-        // Random reset to create varied rain effect
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0
         }
       }
     }
 
-    // Animation loop
-    let animationId: number
-    const animate = () => {
-      draw()
+    // Throttled to 24fps — smooth rain, far less GPU/GC stutter
+    const FRAME_MS = 1000 / 24
+    let animationId = 0
+    let lastFrame = 0
+    const animate = (timestamp: number) => {
       animationId = requestAnimationFrame(animate)
+      if (timestamp - lastFrame < FRAME_MS) return
+      lastFrame = timestamp
+      draw()
     }
 
-    animate()
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    if (reduceMotion) {
+      draw() // single static frame, no loop
+    } else {
+      animationId = requestAnimationFrame(animate)
+    }
 
     // Cleanup
     return () => {

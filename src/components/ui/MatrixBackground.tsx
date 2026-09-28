@@ -18,10 +18,16 @@ const MatrixBackground: React.FC<MatrixBackgroundProps> = ({ opacity = 0.05 }) =
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas dimensions to match window
+    // Set canvas dimensions to match the window. Assigning width/height clears
+    // the canvas, so skip when unchanged to avoid visible flashes.
+    let lastWidth = 0
+    let lastHeight = 0
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      if (window.innerWidth === lastWidth && window.innerHeight === lastHeight) return
+      lastWidth = window.innerWidth
+      lastHeight = window.innerHeight
+      canvas.width = lastWidth
+      canvas.height = lastHeight
     }
 
     resizeCanvas()
@@ -38,42 +44,49 @@ const MatrixBackground: React.FC<MatrixBackgroundProps> = ({ opacity = 0.05 }) =
       drops[i] = Math.floor(Math.random() * -canvas.height)
     }
 
+    // Precomputed strings — allocating these every frame causes GC pauses,
+    // which showed up as UI flicker every few seconds.
+    const fadeStyle = "rgba(0, 0, 0, 0.05)"
+    const dropStyle = `rgba(0, 255, 0, ${opacity})` // Matrix green with configurable opacity
+    const font = `${fontSize}px monospace`
+
     // Draw the matrix rain
     const draw = () => {
-      // Clear canvas
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
+      ctx.fillStyle = fadeStyle
       ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-      // Set text color and font
-      ctx.fillStyle = `rgba(0, 255, 0, ${opacity})` // Matrix green with configurable opacity
-      ctx.font = `${fontSize}px monospace`
+      ctx.fillStyle = dropStyle
+      ctx.font = font
 
-      // Draw each character
       for (let i = 0; i < drops.length; i++) {
-        // Random character
         const char = chars[Math.floor(Math.random() * chars.length)]
-
-        // Draw the character
         ctx.fillText(char, i * fontSize, drops[i] * fontSize)
-
-        // Move the drop down
         drops[i]++
 
-        // Random reset to create varied rain effect
         if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0
         }
       }
     }
 
-    // Animation loop
-    let animationId: number
-    const animate = () => {
-      draw()
+    // A background effect doesn't need 60fps — throttling to 24fps keeps the
+    // rain smooth while avoiding GPU/GC stutter on low-end devices.
+    const FRAME_MS = 1000 / 24
+    let animationId = 0
+    let lastFrame = 0
+    const animate = (timestamp: number) => {
       animationId = requestAnimationFrame(animate)
+      if (timestamp - lastFrame < FRAME_MS) return
+      lastFrame = timestamp
+      draw()
     }
 
-    animate()
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+    if (reduceMotion) {
+      draw() // single static frame, no loop
+    } else {
+      animationId = requestAnimationFrame(animate)
+    }
 
     // Cleanup
     return () => {

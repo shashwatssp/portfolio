@@ -157,11 +157,17 @@ body.website-mode .hero-grid-bg {
   text-align: center;
   font-size: 14px;
   color: var(--text-color-dim);
+  min-width: 0; /* allow shrinking inside flex */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .terminal-controls {
   display: flex;
   gap: 10px;
+  align-items: center; /* vertical alignment across all controls */
+  flex-shrink: 0; /* never squish the controls */
 }
 
 .theme-toggle-button,
@@ -169,12 +175,14 @@ body.website-mode .hero-grid-bg {
   background: none;
   border: 1px solid var(--border-color);
   color: var(--text-color);
-  border-radius: 4px;
-  width: 30px;
-  height: 30px;
+  border-radius: 999px; /* pill, matching the mode switcher */
+  width: 34px; /* matches mode switcher height */
+  height: 34px;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* center icon horizontally */
+  justify-content: center; /* center icon vertically */
+  flex-shrink: 0;
   cursor: pointer;
   transition: all 0.2s;
 }
