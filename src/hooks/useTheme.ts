@@ -30,6 +30,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  // Sync theme class to <html> so Tailwind's `dark:` variants and CSS variables
+  // (scoped to `.dark` in globals.css) apply everywhere, including portals.
+  useEffect(() => {
+    const root = document.documentElement
+    root.classList.remove("light", "dark")
+    root.classList.add(theme)
+  }, [theme])
+
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark"
     setTheme(newTheme)

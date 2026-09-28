@@ -7,9 +7,11 @@ import AsciiHeader from "./components/AsciiHeader"
 import { TypingEffect } from "./components/ui/TypingEffect"
 import { ThemeProvider, useTheme } from "./hooks/useTheme"
 import { InterfaceModeProvider, useInterfaceMode } from "./hooks/useInterfaceMode"
-import { Sun, Moon, MessageSquare, TerminalIcon } from "lucide-react"
+import { Sun, Moon } from "lucide-react"
+import ModeSwitcher from "./components/ui/ModeSwitcher"
 import MatrixBackground from "./components/ui/MatrixBackground"
 import MatrixRain from "./components/ui/MatrixRain"
+import Website from "./components/website/Website"
 import "./styles/global.css"
 import "./styles/voice-mode.css"
 import "./styles/matrix-rain.css"
@@ -19,9 +21,14 @@ function AppContent() {
   const [showInitialMatrix, setShowInitialMatrix] = useState(true)
   const terminalRef = useRef<HTMLDivElement>(null)
   const { theme, toggleTheme } = useTheme()
-  const { interfaceMode, setInterfaceMode } = useInterfaceMode()
+  const { interfaceMode } = useInterfaceMode()
+
+  const isWebsiteMode = interfaceMode === "website"
 
   useEffect(() => {
+    // Skip intro timers entirely in website mode
+    if (isWebsiteMode) return
+
     // Show matrix rain effect for 3 seconds on initial load
     const matrixTimer = setTimeout(() => {
       setShowInitialMatrix(false)
@@ -41,7 +48,11 @@ function AppContent() {
       clearTimeout(matrixTimer)
       clearTimeout(introTimer)
     }
-  }, [])
+  }, [isWebsiteMode])
+
+  if (isWebsiteMode) {
+    return <Website />
+  }
 
   return (
     <div className={`app-container ${theme}`}>
@@ -69,21 +80,7 @@ function AppContent() {
             {interfaceMode === "terminal" ? "Portfolio Terminal" : "Portfolio Chatbot"}
           </div>
           <div className="terminal-controls">
-            <button
-              className="switch-interface-button"
-              onClick={() => setInterfaceMode(interfaceMode === "terminal" ? "chatbot" : "terminal")}
-              aria-label={`Switch to ${interfaceMode === "terminal" ? "chatbot" : "terminal"} interface`}
-            >
-              {interfaceMode === "terminal" ? (
-                <>
-                  <MessageSquare size={16} /> <span className="button-text">Switch to Chatbot</span>
-                </>
-              ) : (
-                <>
-                  <TerminalIcon size={16} /> <span className="button-text">Switch to Terminal</span>
-                </>
-              )}
-            </button>
+            <ModeSwitcher />
             <button
               className="theme-toggle-button"
               onClick={toggleTheme}
@@ -117,22 +114,6 @@ function AppContent() {
 }
 
 export default function App() {
-  useEffect(() => {
-    // Ensure proper viewport settings for mobile devices
-    const metaViewport = document.querySelector("meta[name=viewport]")
-    if (!metaViewport) {
-      const meta = document.createElement("meta")
-      meta.name = "viewport"
-      meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-      document.head.appendChild(meta)
-    } else {
-      metaViewport.setAttribute(
-        "content",
-        "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover",
-      )
-    }
-  }, [])
-
   return (
     <ThemeProvider>
       <InterfaceModeProvider>

@@ -4,7 +4,7 @@ import React from "react"
 
 import { useState, useEffect, createContext, useContext } from "react"
 
-type InterfaceMode = "terminal" | "chatbot"
+export type InterfaceMode = "website" | "terminal" | "chatbot"
 
 interface InterfaceModeContextType {
   interfaceMode: InterfaceMode
@@ -12,24 +12,26 @@ interface InterfaceModeContextType {
 }
 
 const InterfaceModeContext = createContext<InterfaceModeContextType>({
-  interfaceMode: "terminal",
+  interfaceMode: "website",
   setInterfaceMode: () => {},
 })
 
 export function InterfaceModeProvider({ children }: { children: React.ReactNode }) {
-  const [interfaceMode, setInterfaceMode] = useState<InterfaceMode>("terminal")
+  // Default to website mode for first-time visitors; saved preference wins.
+  const [interfaceMode, setInterfaceMode] = useState<InterfaceMode>("website")
 
   useEffect(() => {
-    // Check if user has a saved preference
-    const savedMode = localStorage.getItem("interfaceMode") as InterfaceMode | null
-    if (savedMode) {
+    // Check if user has a saved preference (v2 key: old terminal/chatbot
+    // preferences are intentionally ignored so visitors land on the website)
+    const savedMode = localStorage.getItem("interfaceMode.v2") as InterfaceMode | null
+    if (savedMode === "website" || savedMode === "terminal" || savedMode === "chatbot") {
       setInterfaceMode(savedMode)
     }
   }, [])
 
   const setMode = (mode: InterfaceMode) => {
     setInterfaceMode(mode)
-    localStorage.setItem("interfaceMode", mode)
+    localStorage.setItem("interfaceMode.v2", mode)
   }
 
   return React.createElement(

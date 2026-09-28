@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Code, Cpu, Database, Globe, Server, Zap } from "lucide-react"
+import TechIcon from "../ui/TechIcon"
 
 interface Skill {
   name: string
@@ -25,13 +26,13 @@ export default function Skills() {
       { name: "LLM APIs", icon: <Globe size={16} />, level: 5 },
     ],
     "Frontend & Backend": [
-      { name: "React ⭐", icon: <Globe size={16} />, level: 5 },
+      { name: "React", icon: <Globe size={16} />, level: 5 },
       { name: "Next.js", icon: <Globe size={16} />, level: 4 },
       { name: "Node.js", icon: <Server size={16} />, level: 4 },
       { name: "Go (Gin, Fiber)", icon: <Server size={16} />, level: 5 },
     ],
     "DevOps & Cloud": [
-      { name: "Kubernetes ☸️", icon: <Cpu size={16} />, level: 5 },
+      { name: "Kubernetes", icon: <Cpu size={16} />, level: 5 },
       { name: "Docker", icon: <Cpu size={16} />, level: 4 },
       { name: "Istio & Argo CD", icon: <Cpu size={16} />, level: 4 },
       { name: "CI/CD", icon: <Zap size={16} />, level: 5 },
@@ -77,7 +78,9 @@ export default function Skills() {
                   transition={{ duration: 0.3, delay: 0.1 }}
                 >
                   <div className="skill-info">
-                    <span className="skill-icon">{skill.icon}</span>
+                    <span className="skill-icon">
+                      <TechIcon name={skill.name} size={16} />
+                    </span>
                     <span className="skill-name">{skill.name}</span>
                   </div>
                   {renderSkillLevel(skill.level)}

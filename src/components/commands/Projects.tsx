@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { ExternalLink, Github, Youtube } from "lucide-react"
 import { Modal } from "../ui/Modal"
+import TechIcon from "../ui/TechIcon"
 
 interface Project {
   name: string
@@ -17,6 +18,20 @@ interface Project {
   demoImage?: string
   features: string[]
 }
+
+// Display order synced with the website (FlowChat → MockMate → Invoxa → Fast7 → TransformerTrek → rest)
+const PROJECT_ORDER = [
+  "flowchat",
+  "mockmate",
+  "invoxa",
+  "fast7",
+  "transformertrek",
+  "shhhdrop",
+  "chessAI",
+  "intelliTraffic",
+  "memeverse",
+  "amazonClone",
+]
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -184,6 +199,10 @@ export default function Projects() {
     },
   ]
 
+  const orderedProjects = [...projects].sort(
+    (a, b) => PROJECT_ORDER.indexOf(a.name) - PROJECT_ORDER.indexOf(b.name),
+  )
+
   const openProjectDemo = (project: Project) => {
     setSelectedProject(project)
   }
@@ -202,7 +221,7 @@ export default function Projects() {
       <h2 className="command-title">Projects</h2>
 
       <div className="projects-list">
-        {projects.map((project, index) => (
+        {orderedProjects.map((project, index) => (
           <motion.div
             key={project.name}
             className="project-item"
@@ -244,7 +263,7 @@ export default function Projects() {
             <div className="tech-stack">
               {project.techStack.map((tech) => (
                 <span key={tech} className="tech-badge">
-                  {tech}
+                  <TechIcon name={tech} size={12} /> {tech}
                 </span>
               ))}
             </div>
@@ -281,7 +300,7 @@ export default function Projects() {
               <div className="tech-stack">
                 {selectedProject.techStack.map((tech) => (
                   <span key={tech} className="tech-badge">
-                    {tech}
+                    <TechIcon name={tech} size={12} /> {tech}
                   </span>
                 ))}
               </div>
